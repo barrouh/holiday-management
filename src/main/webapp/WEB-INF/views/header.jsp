@@ -5,6 +5,8 @@
 <html lang="en">
 	<head>
 		<title>Holiday Management</title>
+		<spring:url value="/resources/core/img/favicon.ico" var="favicon" />
+		<link rel="shortcut icon" href="${favicon}" type="image/vnd.microsoft.icon" />
 		<spring:url value="/resources/core/css/main.css" var="coreCss" />
 		<spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" />
 		<link href="${bootstrapCss}" rel="stylesheet" />
