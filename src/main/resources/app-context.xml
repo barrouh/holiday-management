@@ -15,14 +15,18 @@
 
 	<context:component-scan base-package="com.everis.*" />
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://remotemysql.com:3306/8fKpUFkoju"></property>
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://remotemysql.com:3306/8fKpUFkoju"></property>
 		<property name="username" value="8fKpUFkoju"></property>
 		<property name="password" value="0Ehct4ULD9"></property>
 	</bean>
 
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="packagesToScan" value="com.everis.domain" />
 		<property name="hibernateProperties">
@@ -36,9 +40,8 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
-	
-	<bean id="holidayManagementService" class="com.everis.service.impl.HolidayManagementServiceImpl"/>
+
+	<tx:annotation-driven
+		transaction-manager="transactionManager" proxy-target-class="true" />
 
 </beans>  

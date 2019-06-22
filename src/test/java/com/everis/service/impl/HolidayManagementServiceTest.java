@@ -33,7 +33,7 @@ public class HolidayManagementServiceTest {
 		epo.setIdProject("EPO_PGP");
 		epo.setProjectName("EPO");
 		epo.setDescription("PREG, PLEG, PIP5");
-		holidayManagementService.addProject(epo);
+		//holidayManagementService.addProject(epo);
 	}
 
 	@Test
