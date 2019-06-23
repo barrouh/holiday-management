@@ -7,6 +7,7 @@
 	<artifactId>HolidayManagement</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
+	<name>HMS - Holiday Management Service</name>
 
 	<url>https://github.com/barrouh/HolidayManagement</url>
 	<description></description>
@@ -26,9 +27,9 @@
 		</developer>
 		<developer>
 			<name>Oussama EL Abed</name>
-			<email></email>
-			<organization></organization>
-			<organizationUrl></organizationUrl>
+			<email>elabedouss@gmail.com</email>
+			<organization>com.github.elabedouss</organization>
+			<organizationUrl>https://github.com/elabedouss</organizationUrl>
 		</developer>
 	</developers>
 
