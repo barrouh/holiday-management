@@ -8,6 +8,9 @@
 <head>
 <title><spring:message code="website.title" /></title>
 
+<spring:url value="/resources/images/favicon.ico" var="favicon" />
+<link rel="shortcut icon" href="${favicon}"
+	type="image/vnd.microsoft.icon" />
 <%-- <spring:url value="/resources/themes/bootstrap/bootstrap.min.css" var="bootstrapCss" /> --%>
 <spring:url value="/resources/themes/uikit/uikit.min.css" var="uikitCss" />
 <spring:url value="/resources/themes/uikit/uikit-rtl.min.css"
