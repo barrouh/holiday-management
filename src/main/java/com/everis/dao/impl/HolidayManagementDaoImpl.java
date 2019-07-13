@@ -1,10 +1,14 @@
 package com.everis.dao.impl;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
 import java.util.List;
 
+import org.apache.catalina.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,14 +19,16 @@ import com.everis.dao.ProjectDao;
 import com.everis.domain.Employee;
 import com.everis.domain.Holiday;
 import com.everis.domain.Project;
+import com.fasterxml.classmate.AnnotationConfiguration;
 
 /**
  * 
  * @author barrouh
+ * @param <employee>
  *
  */
 @Repository
-public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDao, HolidayDao, EmployeeDao {
+public class HolidayManagementDaoImpl<employee> implements HolidayManagementDao, ProjectDao, HolidayDao, EmployeeDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -33,61 +39,67 @@ public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDa
 
 	@Override
 	public int addEmployee(Employee employee) {
-		// TODO Auto-generated method stub
+		getSession().save(employee);
 		return 0;
 	}
 
 	@Override
 	public int updateEmployee(Employee employee) {
-		// TODO Auto-generated method stub
+		getSession().update(employee);
 		return 0;
 	}
 
 	@Override
 	public Employee getEmployeeById(String employeeId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Employee employee = (Employee) getSession().getIdentifier(employeeId);
+		
+		return employee;
 	}
 
 	@Override
 	public List<Employee> getAllEmployees() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		  Query <Employee> queryResult = getSession().createQuery("from Employee",Employee.class);
+		     
+		  
+		return queryResult.list();
 	}
 
 	@Override
 	public int deleteEmployee(String employeeId) {
-		// TODO Auto-generated method stub
+		getSession().delete(employeeId);
 		return 0;
 	}
 
 	@Override
 	public int addHoliday(Holiday holiday) {
-		// TODO Auto-generated method stub
+		getSession().save(holiday);
 		return 0;
 	}
 
 	@Override
 	public int updateHoliday(Holiday holiday) {
-		// TODO Auto-generated method stub
+		getSession().update(holiday);
 		return 0;
 	}
 
 	@Override
 	public Holiday getHolidayById(String holidayId) {
-		// TODO Auto-generated method stub
-		return null;
+		Holiday holiday = (Holiday) getSession().getIdentifier(holidayId);
+		return holiday;
 	}
 
 	@Override
 	public List<Holiday> getAllHolidays() {
-		// TODO Auto-generated method stub
-		return null;
+		 Query <Holiday> queryResult = getSession().createQuery("from Holiday",Holiday.class);
+	    
+			return queryResult.list();
 	}
 
 	@Override
 	public int deleteHoliday(String holidayId) {
-		// TODO Auto-generated method stub
+		getSession().delete(holidayId);
 		return 0;
 	}
 
@@ -99,25 +111,28 @@ public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDa
 
 	@Override
 	public int updateProject(Project project) {
-		// TODO Auto-generated method stub
+		getSession().update(project);	
 		return 0;
 	}
 
 	@Override
 	public Project getProjectById(String projectId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Project project = (Project) getSession().getIdentifier(projectId);
+		return project;
 	}
 
 	@Override
 	public List<Project> getAllProjects() {
-		// TODO Auto-generated method stub
-		return null;
+		Query <Project> queryResult = getSession().createQuery("from Project",Project.class);
+	    
+		return queryResult.list();
+		
 	}
 
 	@Override
 	public int deleteProject(String projectId) {
-		// TODO Auto-generated method stub
+		getSession().delete(projectId);
 		return 0;
 	}
 	
