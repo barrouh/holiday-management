@@ -7,7 +7,6 @@
 	uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
 	<nav class="uk-navbar-container" uk-navbar=style="position:relative; z-index: 980;">
 		<div class="uk-navbar-center">
-
 			<ul class="uk-navbar-nav uk-height-max-small">
 				<li class="uk-active"><a href="#"><spring:message
 							code="navbar.menu.welcome" /></a></li>

@@ -6,6 +6,6 @@
 
 <tags:header />
 <body>
-	<tags:navbar></tags:navbar>
+	<jsp:include page="views/login.jsp"></jsp:include>
 </body>
-<tags:footer></tags:footer>
+<tags:footer />

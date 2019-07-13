@@ -22,7 +22,8 @@
 <link href="${mainCss}" rel="stylesheet" />
 </head>
 
-<div class="uk-section uk-section-xsmall" id="header-section-personal">
+<div class="uk-section uk-section-xsmall  uk-animation-fade"
+	id="header-section-personal">
 	<div class="uk-container uk-container-large">
 		<h3 class="uk-heading-xsmall">
 			<a class="uk-link-reset" id="header-title-personal" href="/"><spring:message

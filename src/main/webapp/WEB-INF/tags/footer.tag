@@ -12,19 +12,18 @@
 	var="angularJs" />
 <spring:url value="/resources/scripts/main.js" var="mainJs" />
 <script src="${jqueryJs}"></script>
-<script src="${uikitIcones}"></script>
 <script src="${uikitJs}"></script>
+<script src="${uikitIcones}"></script>
 <script src="${angularJs}"></script>
 <script src="${mainJs}"></script>
 
-<div class="uk-section uk-section-xsmall">
+<div class="uk-section uk-section-xsmall  uk-animation-fade">
 	<div class="uk-container uk-container-large">
 		<h6 class="uk-text-center">
-			<span> <spring:message code="footer.markup" /></span>
+			<hr>
+			<span> <spring:message code="footer.markup" />
+			</span>
 		</h6>
 	</div>
 </div>
 </html>
-
-
-

@@ -16,3 +16,16 @@
 /***************************
 ********** Footer **********
 ***************************/
+
+/***************************
+********** Login  **********
+***************************/
+#login-form-text-personal {
+	font-weight: bold;
+	color: #2F7F58;
+}
+
+#login-button-personal {
+	background: #2F7F58;
+	font-weight: bold;
+}
