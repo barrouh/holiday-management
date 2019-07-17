@@ -7,7 +7,7 @@
 	<artifactId>HolidayManagement</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>HMW - Holiday Management WebApp</name>
+	<name>HMS - Holiday Management Service</name>
 
 	<url>https://github.com/barrouh/HolidayManagement</url>
 	<description></description>

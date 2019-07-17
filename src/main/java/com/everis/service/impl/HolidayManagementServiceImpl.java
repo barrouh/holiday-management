@@ -115,10 +115,4 @@ public class HolidayManagementServiceImpl implements HolidayManagementService, H
 	public int deleteProject(String projectId) {
 		return holidayManagementDao.deleteProject(projectId);
 	}
-
-	@Override
-	@Transactional 
-	public Employee logInEmployee(String username, String password) {
-		return holidayManagementDao.logInEmployee(username, password);
-	}
 }
