@@ -38,34 +38,27 @@ public class HolidayManagementServiceTest {
 		epo.setProjectName("EPO");
 		epo.setDescription("PREG, PLEG, PIP5");
 		assertEquals(0, holidayManagementService.addProject(epo));
-		// holidayManagementService.addProject(epo);
-	}
+			}
 
 	@Test
 	public void updateProjectTest() {
 		Project epo = holidayManagementService.getProjectById("EPO_PGP");
 		epo.setDescription("Europian patent office");
 		assertEquals(0, holidayManagementService.updateProject(epo));
-		// holidayManagementService.updateProject(project);
-	}
+			}
 
 	@Test
 	public void getProjectByIdTest() {
-
 		Project epo = holidayManagementService.getProjectById("EPO_PGP");
 		assertNotNull(epo);
-		// holidayManagementService.getProjectById(projectId);
-	}
+			}
 
 	@Test
 	public void getAllProjectsTest() {
 
 		List<Project> projects = holidayManagementService.getAllProjects();
-
 		assertNotNull(projects);
-
-		// holidayManagementService.getAllProjects();
-	}
+			}
 
 	@Test
 	public void deleteProjectTest() {
