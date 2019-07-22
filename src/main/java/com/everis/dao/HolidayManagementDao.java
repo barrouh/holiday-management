@@ -1,5 +1,7 @@
 package com.everis.dao;
 
+import com.everis.domain.Employee;
+
 /**
  * 
  * @author barrouh
@@ -8,6 +10,6 @@ package com.everis.dao;
 
 public interface HolidayManagementDao {
 	
-	// this interface for special usage of database
+	 Employee logInEmployee(String username, String password);
 
 }

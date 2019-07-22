@@ -1,10 +1,11 @@
 package com.everis.dao.impl;
 
-
 import java.util.List;
 
-import org.apache.catalina.User;
-import org.hibernate.HibernateException;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -18,21 +19,19 @@ import com.everis.dao.ProjectDao;
 import com.everis.domain.Employee;
 import com.everis.domain.Holiday;
 import com.everis.domain.Project;
-import com.fasterxml.classmate.AnnotationConfiguration;
 
 /**
  * 
  * @author barrouh
- * @param <employee>
  *
  */
 @Repository
-public class HolidayManagementDaoImpl<employee> implements HolidayManagementDao, ProjectDao, HolidayDao, EmployeeDao {
+public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDao, HolidayDao, EmployeeDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public Session getSession() throws HibernateException {
+	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
 
@@ -133,6 +132,17 @@ public class HolidayManagementDaoImpl<employee> implements HolidayManagementDao,
 	public int deleteProject(String projectId) {
 		getSession().delete(projectId);
 		return 0;
+	}
+
+	@Override
+	public Employee logInEmployee(String username, String password) {
+		CriteriaBuilder builder = getSession().getCriteriaBuilder();
+        CriteriaQuery<Employee> query = builder.createQuery(Employee.class);
+        Root<Employee> root = query.from(Employee.class);
+        query.select(root).where(builder.equal(root.get("username"), username));
+        query.select(root).where(builder.equal(root.get("password"), password));
+        Query<Employee> q = getSession().createQuery(query);
+        return q.getSingleResult();
 	}
 	
 }

@@ -1,10 +1,5 @@
 package com.everis.service.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
@@ -22,62 +17,48 @@ import com.everis.domain.Project;
  * @author barrouh
  *
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:app-context.xml" })
-public class HolidayManagementServiceTest {
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:app-context.xml"})
+public class HolidayManagementServiceTest {
+	
 	@Autowired
 	private HolidayManagementServiceImpl holidayManagementService;
-
+	
 	static final Logger LOGGER = LogManager.getLogger(HolidayManagementServiceTest.class);
-
+	
 	@Test
 	public void addProjectTest() {
 		Project epo = new Project();
 		epo.setIdProject("EPO_PGP");
 		epo.setProjectName("EPO");
 		epo.setDescription("PREG, PLEG, PIP5");
-		assertEquals(0, holidayManagementService.addProject(epo));
-		// holidayManagementService.addProject(epo);
+		//holidayManagementService.addProject(epo);
 	}
 
 	@Test
 	public void updateProjectTest() {
-		Project epo = holidayManagementService.getProjectById("EPO_PGP");
-		epo.setDescription("Europian patent office");
-		assertEquals(0, holidayManagementService.updateProject(epo));
-		// holidayManagementService.updateProject(project);
+		 //holidayManagementService.updateProject(project);
 	}
 
 	@Test
 	public void getProjectByIdTest() {
-
-		Project epo = holidayManagementService.getProjectById("EPO_PGP");
-		assertNotNull(epo);
-		// holidayManagementService.getProjectById(projectId);
+		 //holidayManagementService.getProjectById(projectId);
 	}
 
 	@Test
 	public void getAllProjectsTest() {
-
-		List<Project> projects = holidayManagementService.getAllProjects();
-
-		assertNotNull(projects);
-
-		// holidayManagementService.getAllProjects();
+		 //holidayManagementService.getAllProjects();
 	}
 
 	@Test
 	public void deleteProjectTest() {
-
-		assertEquals(0, holidayManagementService.deleteProject("EPO_PGP"));
-		// holidayManagementService.deleteProject(projectId);
+		 //holidayManagementService.deleteProject(projectId);
 	}
-
+	
 	@Test
 	public void addEmployeeTest() {
-
-		// holidayManagementService.addEmployee(employee);
+		 //holidayManagementService.addEmployee(employee);
 	}
 
 	@Test
@@ -97,32 +78,32 @@ public class HolidayManagementServiceTest {
 
 	@Test
 	public void deleteEmployeeTest() {
-		// holidayManagementService.deleteEmployee(employeeId);
+		 //holidayManagementService.deleteEmployee(employeeId);
 	}
 
 	@Test
 	public void addHolidayTest() {
-		// holidayManagementService.addHoliday(holiday);
+		 //holidayManagementService.addHoliday(holiday);
 	}
 
 	@Test
 	public void updateHolidayTest() {
-		// holidayManagementService.updateHoliday(holiday);
+		//holidayManagementService.updateHoliday(holiday);
 	}
 
 	@Test
 	public void getHolidayByIdTest() {
-		// holidayManagementService.getHolidayById(holidayId);
+		 //holidayManagementService.getHolidayById(holidayId);
 	}
 
 	@Test
 	public void getAllHolidaysTest() {
-		// holidayManagementService.getAllHolidays();
+		 //holidayManagementService.getAllHolidays();
 	}
 
 	@Test
 	public void deleteHolidayTest() {
-		// holidayManagementService.deleteHoliday(holidayId);
+		 //holidayManagementService.deleteHoliday(holidayId);
 	}
 
 }
