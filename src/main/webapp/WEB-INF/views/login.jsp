@@ -14,6 +14,7 @@
 				<input class="uk-input uk-width-1-3 uk-align-center"
 					id="login-user-personal" name="username" type="text"
 					placeholder="Username">
+				<input class="uk-input uk-width-1-3 uk-align-center" id="login-user-personal" name="username" type="text"  placeholder="Username">
 			</div>
 			<div class="uk-margin ">
 				<input class="uk-input uk-width-1-3 uk-align-center" name="password"
@@ -26,6 +27,11 @@
 					data-loading-text="<i class='fa fa-cog fa-spin'></i>">
 					<spring:message code="login.button" />
 				</button>
+			</div>
+			<div class="uk-margin">
+				<p>
+				
+				</p>
 			</div>
 		</form>
 	</div>

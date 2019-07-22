@@ -142,7 +142,11 @@ public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDa
         query.select(root).where(builder.equal(root.get("username"), username));
         query.select(root).where(builder.equal(root.get("password"), password));
         Query<Employee> q = getSession().createQuery(query);
-        return q.getSingleResult();
+        if(!q.list().isEmpty()) {
+        	return q.getSingleResult();
+        }else {
+        	return null;
+        }
 	}
 	
 }
