@@ -22,10 +22,10 @@ public class Employee implements java.io.Serializable {
 	private Integer idEmployee;
 
 	@Column(name = "username")
-	private int username;
+	private String username;
 	
 	@Column(name = "password")
-	private int password;
+	private String password;
 
 	@Column(name = "firstName")
 	private String firstName;
@@ -60,7 +60,7 @@ public class Employee implements java.io.Serializable {
 
 	}
 
-	public Employee(Integer idEmployee, int username, int password, String firstName, String lastName,
+	public Employee(Integer idEmployee, String username, String password, String firstName, String lastName,
 			String mailAdress, String grade, Project project, Employee supervisor, float initialBalance,
 			float currentBalance, List<Holiday> holidays) {
 		this.idEmployee = idEmployee;
@@ -85,19 +85,19 @@ public class Employee implements java.io.Serializable {
 		this.idEmployee = idEmployee;
 	}
 
-	public int getUsername() {
+	public String getUsername() {
 		return username;
 	}
 
-	public void setUsername(int username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 
-	public int getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(int password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
