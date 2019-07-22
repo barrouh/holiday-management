@@ -1,4 +1,7 @@
-<%@ include file="/WEB-INF/views/include.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +22,9 @@
 <link href="${mainCss}" rel="stylesheet" />
 </head>
 
-<div class="uk-section uk-section-xsmall uk-animation-fade"
+<div class="uk-section uk-section-xsmall  uk-animation-fade"
 	id="header-section-personal">
-	<div class="uk-container  uk-container-large">
+	<div class="uk-container uk-container-large">
 		<h3 class="uk-heading-xsmall">
 			<a class="uk-link-reset" id="header-title-personal" href="/"><spring:message
 					code="header.title" /></a>

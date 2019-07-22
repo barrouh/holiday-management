@@ -29,34 +29,3 @@
 	background: #9aae04;
 	font-weight: bold;
 }
-
-/***************************
-********** table ***********
-***************************/
-#table-th-personal>tr>th {
-	background: #e9ecef;
-	color: #868e96;
-	font-weight: bold;
-	text-align: left
-}
-
-/***************************
-*********** Form ***********
-***************************/
-#form-button-add-personal {
-	background: #9aae04;
-}
-
-#form-button-cancel-personal {
-	color: #868e96;
-	border-color: #868e96;
-}
-
-#form-button-add-personal:hover {
-	background: #839403;
-}
-
-#form-button-cancel-personal:hover {
-	background-color: #edeeef;
-	border-color: #868e96;
-}
