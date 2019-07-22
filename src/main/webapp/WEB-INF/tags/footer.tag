@@ -1,7 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
+<%@ include file="/WEB-INF/views/include.jsp"%>
 
 <spring:url value="/resources/scripts/jquery/jquery.min.js"
 	var="jqueryJs" />
@@ -17,7 +14,7 @@
 <script src="${angularJs}"></script>
 <script src="${mainJs}"></script>
 
-<div class="uk-section uk-section-xsmall  uk-animation-fade">
+<div class="uk-section uk-section-xsmall uk-section-muted uk-animation-fade">
 	<div class="uk-container uk-container-large">
 		<h6 class="uk-text-center">
 			<hr>
