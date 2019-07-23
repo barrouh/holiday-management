@@ -1,5 +1,12 @@
 package com.everis.service.impl;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
@@ -33,77 +40,109 @@ public class HolidayManagementServiceTest {
 		epo.setIdProject("EPO_PGP");
 		epo.setProjectName("EPO");
 		epo.setDescription("PREG, PLEG, PIP5");
-		//holidayManagementService.addProject(epo);
+		assertEquals(0,holidayManagementService.addProject(epo));
+		
 	}
 
 	@Test
 	public void updateProjectTest() {
-		 //holidayManagementService.updateProject(project);
+		Project epo = holidayManagementService.getProjectById("EPO_PGP");
+		epo.setDescription("Europein patet office");
+		assertEquals(0,holidayManagementService.updateProject(epo));
 	}
 
 	@Test
 	public void getProjectByIdTest() {
-		 //holidayManagementService.getProjectById(projectId);
+		Project epo = holidayManagementService.getProjectById("EPO_PGP");
+		assertNotNull(epo);
 	}
 
 	@Test
 	public void getAllProjectsTest() {
-		 //holidayManagementService.getAllProjects();
+		List<Project> projects = holidayManagementService.getAllProjects();
+		assertNotEquals(0, projects.size());
 	}
 
 	@Test
 	public void deleteProjectTest() {
-		 //holidayManagementService.deleteProject(projectId);
+		
+		assertEquals(0,holidayManagementService.deleteProject("EPO_PGP"));
+		
 	}
 	
 	@Test
 	public void addEmployeeTest() {
-		 //holidayManagementService.addEmployee(employee);
+		Employee empl = new Employee();
+		empl.setIdEmployee(1);
+		empl.setUsername("1");
+		empl.setFirstName("mohamed");
+		empl.setLastName("barrouh");
+		
+		assertEquals(0, holidayManagementService.addEmployee(empl));
 	}
 
 	@Test
 	public void updateEmployeeTest() {
-		// holidayManagementService.updateEmployee(employee);
+		Employee empl = holidayManagementService.getEmployeeById("1");
+		empl.setLastName("barrouhh");
+		assertEquals(0,holidayManagementService.updateEmployee(empl));
 	}
 
 	@Test
 	public void getEmployeeByIdTest() {
-		// holidayManagementService.getEmployeeById(employeeId);
+		Employee empl = holidayManagementService.getEmployeeById("1");
+		assertNotNull(empl);
+		
 	}
 
 	@Test
 	public void getAllEmployeesTest() {
-		// holidayManagementService.getAllEmployees();
+		
+		List<Employee> empls = holidayManagementService.getAllEmployees();
+		assertNotEquals(0,empls.size());
+		
 	}
 
 	@Test
 	public void deleteEmployeeTest() {
-		 //holidayManagementService.deleteEmployee(employeeId);
+		assertEquals(0,holidayManagementService.deleteEmployee("1"));
 	}
 
 	@Test
 	public void addHolidayTest() {
-		 //holidayManagementService.addHoliday(holiday);
-	}
+		
+		Holiday hld = new Holiday();
+		hld.setIdHoliday(1);
+		hld.setComment("summer holidays");
+		
+		assertEquals(0,holidayManagementService.addHoliday(hld));
+			}
 
 	@Test
 	public void updateHolidayTest() {
-		//holidayManagementService.updateHoliday(holiday);
+		Holiday hld = holidayManagementService.getHolidayById("1");
+		hld.setDuration(10);
+		
+		assertEquals(0,holidayManagementService.updateHoliday(hld));
 	}
 
 	@Test
 	public void getHolidayByIdTest() {
-		 //holidayManagementService.getHolidayById(holidayId);
+		Holiday hld = holidayManagementService.getHolidayById("1");
+		assertNotNull(hld);
 	}
 
 	@Test
 	public void getAllHolidaysTest() {
-		 //holidayManagementService.getAllHolidays();
+		
+		List<Holiday> holidays = holidayManagementService.getAllHolidays();
+		
+		 assertNotEquals(0,holidays.size());
 	}
 
 	@Test
 	public void deleteHolidayTest() {
-		 //holidayManagementService.deleteHoliday(holidayId);
+		 assertEquals(0,holidayManagementService.deleteHoliday("1"));
 	}
 
 }
