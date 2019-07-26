@@ -39,7 +39,6 @@ public class HolidayManagementServiceTest {
 		epo.setProjectName("EPO");
 		epo.setDescription("PREG, PLEG, PIP5");
 		assertEquals(0,holidayManagementService.addProject(epo));
-		
 	}
 
 	@Test

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="barrouh (generated)" id="1564175690064-1">
+        <createTable schemaName="HMW_SCHEMA" tableName="Employee">
+            <column name="idemployee" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="firstname" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastname" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mailadress" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="grade" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idproject" type="VARCHAR(50)"/>
+            <column name="idsupervisor" type="INT"/>
+            <column name="initialbalance" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currentbalance" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="barrouh (generated)" id="1564175690064-2">
+        <createTable schemaName="HMW_SCHEMA" tableName="Holiday">
+            <column name="idholiday" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="refholiday" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="daterequest" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="startdate" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enddate" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="duration" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idemployee" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment" type="VARCHAR(300)"/>
+            <column name="type" type="VARCHAR(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="barrouh (generated)" id="1564175690064-3">
+        <createTable schemaName="HMW_SCHEMA" tableName="Project">
+            <column name="idproject" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="projectname" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(200)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="barrouh (generated)" id="1564175690064-4">
+        <addPrimaryKey columnNames="idemployee" constraintName="PRIMARYEmployee" tableName="Employee"/>
+    </changeSet>
+    <changeSet author="barrouh (generated)" id="1564175690064-5">
+        <addPrimaryKey columnNames="idholiday" constraintName="PRIMARYHoliday" tableName="Holiday"/>
+    </changeSet>
+    <changeSet author="barrouh (generated)" id="1564175690064-6">
+        <addPrimaryKey columnNames="idproject" constraintName="PRIMARYProject" tableName="Project"/>
+    </changeSet>
+    <changeSet author="barrouh (generated)" id="1564175690064-7">
+        <createIndex indexName="fk_employee" tableName="Employee">
+            <column name="idsupervisor"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="barrouh (generated)" id="1564175690064-8">
+        <createIndex indexName="fk_employee_holiday" tableName="Holiday">
+            <column name="idemployee"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="barrouh (generated)" id="1564175690064-9">
+        <createIndex indexName="fk_project" tableName="Employee">
+            <column name="idproject"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="barrouh (generated)" id="1564175690064-10">
+        <addForeignKeyConstraint baseTableSchemaName="HMW_SCHEMA" baseColumnNames="idsupervisor" baseTableName="Employee" constraintName="fk_employee" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="idemployee" referencedTableName="Employee"/>
+    </changeSet>
+    <changeSet author="barrouh (generated)" id="1564175690064-11">
+        <addForeignKeyConstraint baseTableSchemaName="HMW_SCHEMA" baseColumnNames="idemployee" baseTableName="Holiday" constraintName="fk_employee_holiday" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="idemployee" referencedTableName="Employee"/>
+    </changeSet>
+    <changeSet author="barrouh (generated)" id="1564175690064-12">
+        <addForeignKeyConstraint baseTableSchemaName="HMW_SCHEMA" baseColumnNames="idproject" baseTableName="Employee" constraintName="fk_project" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="idproject" referencedTableName="Project"/>
+    </changeSet>
+    
+     <changeSet author="barrouh (generated)" id="1564175690064-13">
+		<comment>Load Employee Table</comment>
+		<loadData schemaName="HMW_SCHEMA" tableName="Employee"  file="data/Employee.csv" encoding="UTF-8" separator=",">
+		    <column name="idemployee" type="NUMERIC"/>
+			<column name="firstname" type="STRING"/>
+            <column name="lastname" type="STRING"/>
+            <column name="username" type="STRING"/>
+            <column name="password" type="STRING"/>
+            <column name="mailadress" type="STRING"/>
+            <column name="grade" type="STRING"/>
+            <column name="idproject" type="STRING"/>
+            <column name="idsupervisor" type="NUMERIC"/>
+            <column name="initialbalance" type="NUMERIC"/>
+            <column name="currentbalance" type="NUMERIC"/>
+		</loadData>
+	</changeSet>
+	
+	 <changeSet author="barrouh (generated)" id="1564175690064-14">
+		<comment>Load Holiday Table</comment>
+		<loadData schemaName="HMW_SCHEMA" tableName="Holiday"  file="data/Holiday.csv" encoding="UTF-8" separator=",">
+		    <column name="idholiday" type="NUMERIC"/>
+			<column name="refholiday" type="STRING"/>
+            <column name="daterequest" type="timestamp"/>
+            <column name="startdate" type="timestamp"/>
+            <column name="enddate" type="timestamp"/>
+            <column name="duration" type="NUMERIC"/>
+            <column name="idemployee" type="NUMERIC"/>
+            <column name="status" type="STRING"/>
+            <column name="comment" type="STRING"/>
+            <column name="type" type="STRING"/>
+		</loadData>
+	</changeSet>
+	
+	<changeSet author="barrouh (generated)" id="1564175690064-15">
+		<comment>Load Project Table</comment>
+		<loadData schemaName="HMW_SCHEMA" tableName="Project"  file="data/Project.csv" encoding="UTF-8" separator=",">
+		    <column name="idproject" type="STRING"/>
+			<column name="projectname" type="STRING"/>
+            <column name="description" type="STRING"/>
+		</loadData>
+	</changeSet>
+	
+</databaseChangeLog>

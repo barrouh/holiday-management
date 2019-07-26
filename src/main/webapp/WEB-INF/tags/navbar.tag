@@ -1,14 +1,11 @@
 <%@ include file="/WEB-INF/views/include.jsp"%>
 
-<div
-	uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
 	<nav class="uk-navbar-container" uk-navbar=style="position:relative; z-index: 980;">
 		<div class="uk-navbar-center">
 			<ul class="uk-navbar-nav uk-height-max-small">
-				<li class="uk-active"><a href="#"><spring:message
-							code="navbar.menu.welcome" /></a></li>
-				<li><a href="#"><spring:message
-							code="navbar.menu.dashboard" /></a></li>
+				<li class="uk-active"><a href="#"><spring:message code="navbar.menu.welcome" /></a></li>
+				<li><a href="#"><spring:message code="navbar.menu.dashboard" /></a></li>
 				<li><a href="#"><spring:message
 							code="navbar.menu.employees" /></a>
 					<div class="uk-navbar-dropdown">
@@ -83,8 +80,7 @@
 										code="navbar.menu.help.getting.started" /></a></li>
 							<li><a href="#"><spring:message
 										code="navbar.menu.help.enable.support" /></a></li>
-							<li><a href="#"><spring:message
-										code="navbar.menu.help.hr.advice" /></a></li>
+							<li><a href="#"><spring:message code="navbar.menu.help.hr.advice" /></a></li>
 						</ul>
 					</div></li>
 			</ul>
