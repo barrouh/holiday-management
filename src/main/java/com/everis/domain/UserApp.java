@@ -11,12 +11,19 @@ public class UserApp implements java.io.Serializable{
 	
 	private boolean logged = false;
 	
+	private boolean loggingFailed = false;
+	
 	public UserApp() {
+	}
+	
+	public UserApp(boolean loggingFailed) {
+		this.loggingFailed = loggingFailed;
 	}
 
 	public UserApp(Employee employee, boolean logged) {
 		this.logged = logged;
 		this.employee = employee;
+		this.loggingFailed = false;
 	}
 
 	public boolean isLogged() {
@@ -25,6 +32,14 @@ public class UserApp implements java.io.Serializable{
 
 	public void setLogged(boolean logged) {
 		this.logged = logged;
+	}
+
+	public boolean isLoggingFailed() {
+		return loggingFailed;
+	}
+
+	public void setLoggingFailed(boolean loggingFailed) {
+		this.loggingFailed = loggingFailed;
 	}
 
 	public Employee getEmployee() {

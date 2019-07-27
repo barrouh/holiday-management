@@ -1,10 +1,7 @@
 <%@ include file="/WEB-INF/views/include.jsp"%>
-
 <section class="uk-section uk-section-muted uk-animation-fade ">
-	<div
-		class="uk-container uk-container-small uk-section-default uk-box-shadow-xlarge uk-padding">
-		<h5 class="uk-heading-line uk-text-center"
-			id="login-form-text-personal">
+	<div class="uk-container uk-container-small uk-section-default uk-box-shadow-xlarge uk-padding">
+		<h5 class="uk-heading-line uk-text-center" id="login-form-text-personal">
 			<spring:message code="login.header" />
 		</h5>
 		<form method="POST" action="/login" class="">
@@ -19,11 +16,13 @@
 					<spring:message code="login.button" />
 				</button>
 			</div>
-			<div class="uk-margin">
-				<p>
-				
-				</p>
-			</div>
+			<c:if test = "${sessionScope.userApp.loggingFailed}">
+				<div class="uk-margin">
+					<p>
+				        <spring:message code="login.error.message" />
+					</p>
+				</div>
+			</c:if>
 		</form>
 	</div>
 </section>

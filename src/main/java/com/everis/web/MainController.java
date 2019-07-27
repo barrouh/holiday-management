@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,9 +38,19 @@ public class MainController {
 		LOGGER.info("Receiving request from client with IP address: " + Tools.getClientIpAddr(request));
 	}
 
-	@GetMapping("/")
+	@RequestMapping(value = "/", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView homePage(HttpServletRequest request) {
 		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		model.setViewName(MAIN_VIEW_NAME);
+		return model;
+	}
+	
+	@GetMapping("/login")
+	public ModelAndView login(HttpServletRequest request) {
+		printRequest(request);
+		HttpSession session = request.getSession(); 	
+		session.setAttribute("userApp", new UserApp());
 		ModelAndView model = new ModelAndView();
 		model.setViewName(MAIN_VIEW_NAME);
 		return model;
@@ -48,15 +60,13 @@ public class MainController {
 	public ModelAndView login(HttpServletRequest request, @RequestParam(required = true) String username, @RequestParam(required = true) String password) {
 		printRequest(request);
 		HttpSession session = request.getSession(); 	
-		ModelAndView model = new ModelAndView();
-		UserApp userApp = new UserApp();
+		UserApp userApp = new UserApp(true);
 		Employee employee = holidayManagementService.logInEmployee(username, password);
 		if(employee != null) {
 			userApp = new UserApp(employee,true);
 		}
 		session.setAttribute("userApp", userApp);
-		model.setViewName(MAIN_VIEW_NAME);
-		return model;
+		return new ModelAndView("redirect:/");
 	}
 	
 	@GetMapping("/projects")
