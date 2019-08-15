@@ -17,6 +17,13 @@
 		<div class="uk-container  uk-container-large">
 			<h3 class="uk-heading-xsmall">
 				<a class="uk-link-reset" id="header-title-personal" href="/"><spring:message code="header.title" /></a>
+				<span class="logged-user" id="header-title-personal">
+				  <c:if test = "${sessionScope.userApp.logged}">
+				         <span uk-icon="icon: user; ratio: 1.5"></span>
+			             <span><c:out value = "${sessionScope.userApp.employee.username}"/></span>
+			             <a href="/logout" uk-icon="icon:  sign-out; ratio: 1.5"></a>
+			      </c:if>
+				</span> 
 			</h3>
 		</div>
 	</div>

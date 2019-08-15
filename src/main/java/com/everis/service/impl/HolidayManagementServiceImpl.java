@@ -40,8 +40,9 @@ public class HolidayManagementServiceImpl implements HolidayManagementService, H
 	}
 
 	@Override
-	public Employee getEmployeeById(String employeeId) {
-		return holidayManagementDao.getEmployeeById(employeeId);
+	@Transactional 
+	public Employee getEmployeeById(Integer idemployee) {
+		return holidayManagementDao.getEmployeeById(idemployee);
 	}
 
 	@Override

@@ -14,11 +14,14 @@
 		<form method="POST" action="" class="">
 			<div class="uk-margin">
 				<input class="uk-input" name="projectname" type="text"
-					placeholder="<spring:message code="project.name" />">
+					placeholder="<spring:message code="project.name" />"
+					value="${updatedProject.projectName}">
+
 			</div>
 			<div class="uk-margin">
 				<input class="uk-input" name="projectdescription" type="text"
-					placeholder="<spring:message code="project.description" />">
+					placeholder="<spring:message code="project.description" />"
+					value="${updatedProject.description}">
 			</div>
 			<hr>
 			<div class="uk-align-right">

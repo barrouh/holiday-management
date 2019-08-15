@@ -4,7 +4,7 @@
 <tags:header />
 <body>
       <c:if test = "${sessionScope.userApp.logged}">
-         <jsp:include page="views/login.jsp"></jsp:include>
+         <jsp:include page="views/account.jsp"></jsp:include>
       </c:if>
        <c:if test = "${!sessionScope.userApp.logged}">
          <jsp:include page="views/login.jsp"></jsp:include>

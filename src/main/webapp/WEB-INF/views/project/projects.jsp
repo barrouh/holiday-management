@@ -15,28 +15,36 @@
 			</h2>
 			<hr>
 		</div>
-		<div class="uk-overflow-auto">
-			<table
-				class="uk-table uk-table-hover uk-table-small uk-table-divider">
-				<thead id="table-th-personal">
-					<tr>
-						<th><spring:message code="project.name" /></th>
-						<th><spring:message code="project.description" /></th>
-						<th><spring:message code="actions" /></th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<tr>
-						<td class="uk-text-truncate">-</td>
-						<td class="uk-text-truncate">-</td>
-						<td class="uk-text-truncate"><a href="#"
-							class="uk-icon-link uk-margin-small-right" uk-icon="file-edit"
-							uk-tooltip="Edit"></a> <a href="#" class="uk-icon-link"
-							uk-icon="trash" uk-tooltip="Delete"></a></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<form method="GET" action="">
+			<div class="uk-overflow-auto">
+				<table
+					class="uk-table uk-table-hover uk-table-small uk-table-divider">
+					<thead id="table-th-personal">
+						<tr>
+							<th><spring:message code="project.name" /></th>
+							<th><spring:message code="project.description" /></th>
+							<th><spring:message code="actions" /></th>
+						</tr>
+					</thead>
+					<c:if test="${not empty projects}">
+						<c:forEach items="${projects}" var="project">
+							<tbody>
+								<tr>
+									<td class="uk-text-truncate">${project.projectName}</td>
+									<td class="uk-text-truncate">${project.description}</td>
+									<td class="uk-text-truncate"><a
+										href="editProject?idproject=${project.idProject}"
+										class="uk-icon-link uk-margin-small-right" uk-icon="file-edit"
+										uk-tooltip="Edit">Edit</a> <a
+										href="deleteProject?idproject=${project.idProject}"
+										class="uk-icon-link" uk-icon="trash" uk-tooltip="Delete">Delete</a>
+									</td>
+								</tr>
+							</tbody>
+						</c:forEach>
+					</c:if>
+				</table>
+			</div>
+		</form>
 	</div>
 </div>

@@ -29,3 +29,22 @@
 	background: #9aae04;
 	font-weight: bold;
 }
+.account{
+	padding:15px;
+}
+
+.account .title{
+	text-transform: uppercase;
+}
+
+.logged-user{
+	right: 30px;
+    position: fixed;
+    color: white !important;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+.logged-user span{
+	font-weight: bold;
+}

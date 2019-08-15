@@ -80,14 +80,14 @@ public class HolidayManagementServiceTest {
 
 	@Test
 	public void updateEmployeeTest() {
-		Employee empl = holidayManagementService.getEmployeeById("1");
+		Employee empl = holidayManagementService.getEmployeeById(1);
 		empl.setLastName("barrouhh");
 		assertEquals(0,holidayManagementService.updateEmployee(empl));
 	}
 
 	@Test
 	public void getEmployeeByIdTest() {
-		Employee empl = holidayManagementService.getEmployeeById("1");
+		Employee empl = holidayManagementService.getEmployeeById(1);
 		assertNotNull(empl);
 		
 	}

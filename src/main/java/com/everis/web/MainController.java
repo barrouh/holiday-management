@@ -56,6 +56,15 @@ public class MainController {
 		return model;
 	}
 	
+	@GetMapping("/logout")
+	public ModelAndView logout(HttpServletRequest request) {
+		printRequest(request);
+		HttpSession session = request.getSession(); 
+		session.invalidate();
+		return new ModelAndView("redirect:/");
+	}
+
+	
 	@PostMapping("/login")
 	public ModelAndView login(HttpServletRequest request, @RequestParam(required = true) String username, @RequestParam(required = true) String password) {
 		printRequest(request);
@@ -73,19 +82,40 @@ public class MainController {
 	public ModelAndView projects(HttpServletRequest request) {
 		printRequest(request);
 		ModelAndView model = new ModelAndView();
-		//holidayManagementService
 		model.addObject("projects", holidayManagementService.getAllProjects());
-		model.setViewName(MAIN_VIEW_NAME);
+		model.setViewName("views/project/projects");
+		return model;
+	}
+	
+	@GetMapping("/editProject")
+	public ModelAndView editProject(HttpServletRequest request , @RequestParam(required = true) String idproject) {
+
+		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		model.addObject("updatedProject",holidayManagementService.getProjectById(idproject));
+		model.setViewName("views/project/editProject");
 		return model;
 	}
 	
 	@GetMapping("/employers")
-	public ModelAndView employers(HttpServletRequest request) {
+	public ModelAndView employees(HttpServletRequest request) {
 		printRequest(request);
 		ModelAndView model = new ModelAndView();
-		model.setViewName(MAIN_VIEW_NAME);
+		model.addObject("employers", holidayManagementService.getAllEmployees());
+		model.setViewName("views/employee/employees");
 		return model;
 	}
+	
+	@GetMapping("/editEmployee")
+	public ModelAndView editEmployee(HttpServletRequest request , @RequestParam(required = true) Integer idemployee) {
+
+		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		model.addObject("updatedEmployee",holidayManagementService.getEmployeeById(idemployee));
+		model.setViewName("views/employee/editEmployee");
+		return model;
+	}
+
 	
 	@GetMapping("/employers/holidays")
 	public ModelAndView holidaysByEmployee(HttpServletRequest request, @RequestParam(required = true) String idEmployee) {

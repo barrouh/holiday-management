@@ -48,10 +48,8 @@ public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDa
 	}
 
 	@Override
-	public Employee getEmployeeById(String employeeId) {
-
-		Employee employee = (Employee) getSession().getIdentifier(employeeId);
-		
+	public Employee getEmployeeById(Integer employeeId) {
+		Employee employee = (Employee) getSession().get(Employee.class, employeeId);
 		return employee;
 	}
 
@@ -116,7 +114,7 @@ public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDa
 	@Override
 	public Project getProjectById(String projectId) {
 		
-		Project project = (Project) getSession().getIdentifier(projectId);
+		Project project = (Project) getSession().get(Project.class, projectId);
 		return project;
 	}
 
@@ -148,5 +146,7 @@ public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDa
         	return null;
         }
 	}
+
+	
 	
 }
