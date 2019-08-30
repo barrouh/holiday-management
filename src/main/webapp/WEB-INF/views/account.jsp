@@ -1,6 +1,5 @@
     <%@ include file="/WEB-INF/views/include.jsp"%>
-        <tags:header/>
-
+  
         <c:set var="employee" value="${sessionScope.userApp.employee}" />
 
         <div class="account">

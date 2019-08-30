@@ -131,10 +131,8 @@ public class HolidayManagementServiceTest {
 
 	@Test
 	public void getAllHolidaysTest() {
-		
 		List<Holiday> holidays = holidayManagementService.getAllHolidays();
-		
-		 assertNotEquals(0,holidays.size());
+		assertNotEquals(0,holidays.size());
 	}
 
 	@Test

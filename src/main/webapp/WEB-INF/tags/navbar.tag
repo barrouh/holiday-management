@@ -1,31 +1,15 @@
-<%@ include file="/WEB-INF/views/include.jsp"%>
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <title>
-            <spring:message code="website.title" />
-        </title>
-        <spring:url value="/resources/images/favicon.ico" var="favicon" />
-        <spring:url value="/resources/themes/uikit/uikit.min.css" var="uikitCss" />
-        <spring:url value="/resources/themes/uikit/uikit-rtl.min.css" var="uikitRtlCss" />
-        <spring:url value="/resources/themes/main.css" var="mainCss" />
-        <link rel="shortcut icon" href="${favicon}" type="image/vnd.microsoft.icon" />
-        <link href="${uikitCss}" rel="stylesheet" />
-        <link href="${uikitRtlCss}" rel="stylesheet" />
-        <link href="${mainCss}" rel="stylesheet" />
-    </head>
-
+    <%@ include file="/WEB-INF/views/include.jsp"%>
     <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
         <div id="navbar-section-personal" class="uk-offcanvas-bar uk-animation-fade">
             <button class="uk-offcanvas-close" type="button" uk-close></button>
             <ul class="uk-nav uk-nav-default">
                 <h3 class="uk-heading-divider">
-							<li id="nav-header-personal" class="uk-nav-header"><spring:message
-									code="navbar.menu.employees" /></li>
-						</h3>
+				  <li id="nav-header-personal" class="uk-nav-header">
+				  <spring:message code="navbar.menu.employees" />
+				  </li>
+				</h3>
                 <li>
-                    <a href="#">
+                    <a href="/employers">
                         <spring:message code="navbar.menu.employees.list" />
                     </a>
                 </li>
@@ -44,7 +28,7 @@
 									code="navbar.menu.projects" /></li>
 						</h3>
                 <li>
-                    <a href="#">
+                    <a href="projects">
                         <spring:message code="navbar.menu.projects.list" />
                     </a>
                 </li>

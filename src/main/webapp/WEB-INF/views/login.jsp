@@ -3,6 +3,7 @@
         <div class="uk-container uk-container-small uk-section-default uk-box-shadow-xlarge uk-padding">
             <h5 class="uk-heading-line uk-text-center" id="login-form-text-personal">
 			<spring:message code="login.header" />
+			</h5>
             <form method="POST" action="/login" class="">
                 <div class="uk-margin ">
                     <input class="uk-input uk-width-1-3 uk-align-center" id="login-user-personal" name="username" type="text" placeholder="Username">

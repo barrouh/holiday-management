@@ -91,6 +91,7 @@
     color: white !important;
 	font-weight: bold;
 	text-transform: capitalize;
+	top: 20px;
 }
 
 .logged-user span{
