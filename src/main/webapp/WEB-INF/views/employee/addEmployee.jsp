@@ -1,5 +1,10 @@
-<%-- add new employee--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/include.jsp"%>
 
+<tags:header />
+<body>
+<c:if test = "${sessionScope.userApp.logged}">
+<%-- add new employee--%>
     <%@ include file="/WEB-INF/views/include.jsp"%>
 
         <section class="uk-section uk-section-muted uk-animation-fade">
@@ -50,3 +55,9 @@
                 </form>
             </div>
         </section>
+         </c:if>
+         <c:if test = "${!sessionScope.userApp.logged}">
+           <c:redirect url="/"/>
+         </c:if>
+       </body>
+<tags:footer />
