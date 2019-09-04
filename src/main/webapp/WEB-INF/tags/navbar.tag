@@ -14,13 +14,33 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/addEmployee">
                         <spring:message code="navbar.menu.employees.add.new" />
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="">
                         <spring:message code="navbar.menu.employees.data" />
+                    </a>
+                </li>
+                 <h3 class="uk-heading-divider">
+				  <li id="nav-header-personal" class="uk-nav-header">
+				  <spring:message code="navbar.menu.holidays" />
+				  </li>
+				</h3>
+                <li>
+                    <a href="/holidays">
+                        <spring:message code="navbar.menu.holidays.list" />
+                    </a>
+                </li>
+                <li>
+                    <a href="/requestHoliday">
+                        <spring:message code="navbar.menu.holidays.add.new" />
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <spring:message code="navbar.menu.holidays.data" />
                     </a>
                 </li>
                 <h3 class="uk-heading-divider">

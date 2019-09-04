@@ -1,5 +1,7 @@
 package com.everis.web;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.everis.domain.Employee;
+import com.everis.domain.Holiday;
 import com.everis.domain.UserApp;
 import com.everis.service.impl.HolidayManagementServiceImpl;
 
@@ -106,6 +109,14 @@ public class MainController {
 		return model;
 	}
 	
+	@GetMapping("/addEmployee")
+	public ModelAndView addEmployee(HttpServletRequest request) {
+		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		model.setViewName("views/employee/addEmployee");
+		return model;
+	}
+	
 	@GetMapping("/editEmployee")
 	public ModelAndView editEmployee(HttpServletRequest request , @RequestParam(required = true) Integer idemployee) {
 
@@ -115,7 +126,39 @@ public class MainController {
 		model.setViewName("views/employee/editEmployee");
 		return model;
 	}
-
+	
+	@GetMapping("/holidays")
+	public ModelAndView holidays(HttpServletRequest request) {
+		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		model.addObject("holidays", holidayManagementService.getAllHolidays());
+		model.setViewName("views/holiday/holidays");
+		return model;
+	}
+	
+	@GetMapping("/requestHoliday")
+	public ModelAndView requestHoliday(HttpServletRequest request) {
+		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		model.setViewName("views/holiday/requestHoliday");
+		return model;
+	}
+	
+	@PostMapping("/requestHoliday")
+	public ModelAndView requestHoliday(HttpServletRequest request,@RequestParam(required = true) Date startDate, @RequestParam(required = true) Date endDate, @RequestParam(required = true) float duration) {
+		printRequest(request);
+		Employee employee = ((UserApp)request.getSession().getAttribute("userApp")).getEmployee();
+		Holiday holiday = new Holiday();
+		holiday.setEmployee(employee);
+		holiday.setDateRequest(new Date());
+		holiday.setStartDate(startDate);
+		holiday.setEndDate(endDate);
+		holiday.setDuration(duration);
+		holidayManagementService.addHoliday(holiday);
+		ModelAndView model = new ModelAndView();
+		model.setViewName("views/holiday/requestHoliday");
+		return model;
+	}
 	
 	@GetMapping("/employers/holidays")
 	public ModelAndView holidaysByEmployee(HttpServletRequest request, @RequestParam(required = true) String idEmployee) {

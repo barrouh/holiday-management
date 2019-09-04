@@ -7,9 +7,9 @@
         <div class="uk-section uk-section-xsmall uk-section-muted uk-animation-fade">
             <div class="uk-container uk-container-large uk-width-5-6 uk-section-default uk-box-shadow-medium uk-padding">
                 <div>
-                    <a href="/addEmployee" class="uk-icon-link uk-margin-small-right uk-align-right" uk-icon="icon: plus-circle; ratio: 2" uk-tooltip="Add a new employee"></a>
+                    <a href="/requestHoliday" class="uk-icon-link uk-margin-small-right uk-align-right" uk-icon="icon: plus-circle; ratio: 2" uk-tooltip="Add a new employee"></a>
                     <h2 class="uk-heading-line">
-				<spring:message code="employees.header" />
+				<spring:message code="holidays.header" />
 			</h2>
             <hr>
                 </div>
@@ -18,53 +18,53 @@
                             <thead id="table-th-personal">
                                 <tr>
                                     <th>
-                                        <spring:message code="employee.first.name" />
+                                        <spring:message code="holiday.id" />
                                     </th>
                                     <th>
-                                        <spring:message code="employee.last.name" />
+                                        <spring:message code="holiday.reference" />
                                     </th>
                                     <th>
-                                        <spring:message code="employee.user.name" />
+                                        <spring:message code="holiday.request.date" />
                                     </th>
                                     <th>
-                                        <spring:message code="employee.address.mail" />
+                                        <spring:message code="holiday.start.date" />
                                     </th>
                                     <th>
-                                        <spring:message code="employee.grade" />
+                                        <spring:message code="holiday.end.date" />
                                     </th>
                                     <th>
-                                        <spring:message code="employee.project" />
+                                        <spring:message code="holiday.duration" />
                                     </th>
                                     <th>
-                                        <spring:message code="employee.supervisor" />
+                                        <spring:message code="holiday.status" />
                                     </th>
                                     <th>
-                                        <spring:message code="employee.initial.days" />
+                                        <spring:message code="holiday.comment" />
                                     </th>
                                     <th>
-                                        <spring:message code="employee.available.days" />
+                                        <spring:message code="holiday.employee" />
                                     </th>
                                     <th>
                                         <spring:message code="actions" />
                                     </th>
                                 </tr>
                             </thead>
-                            <c:if test="${not empty employers}">
-                                <c:forEach items="${employers}" var="employer">
+                            <c:if test="${not empty holidays}">
+                                <c:forEach items="${holidays}" var="holiday">
                                     <tbody style="border: 1px solide black;">
                                         <tr>
-                                            <td class="uk-text-truncate">${employer.firstName}</td>
-                                            <td class="uk-text-truncate">${employer.lastName}</td>
-                                            <td class="uk-text-truncate">${employer.username}</td>
-                                            <td class="uk-text-truncate">${employer.mailAdress}</td>
-                                            <td class="uk-text-truncate">${employer.grade}</td>
-                                            <td class="uk-text-truncate">${employer.project.projectName}</td>
-                                            <td class="uk-text-truncate">${employer.supervisor}</td>
-                                            <td class="uk-text-truncate">${employer.initialBalance}</td>
-                                            <td class="uk-text-truncate">${employer.currentBalance}</td>
+                                            <td class="uk-text-truncate">${holiday.idHoliday}</td>
+                                            <td class="uk-text-truncate">${holiday.refHoliday}</td>
+                                            <td class="uk-text-truncate">${holiday.dateRequest}</td>
+                                            <td class="uk-text-truncate">${holiday.startDate}</td>
+                                            <td class="uk-text-truncate">${holiday.endDate}</td>
+                                            <td class="uk-text-truncate">${holiday.duration}</td>
+                                            <td class="uk-text-truncate">${holiday.status}</td>
+                                            <td class="uk-text-truncate">${holiday.comment}</td>
+                                            <td class="uk-text-truncate">${holiday.employee.username}</td>
                                             <td class="uk-text-truncate">
-                                                <a href="editEmployee?idemployee=${employer.idEmployee}" class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" uk-tooltip="Edit">Edit</a>
-                                                <a href="editEmployee?idemployee=${employer.idEmployee}" class="uk-icon-link" uk-icon="trash" uk-tooltip="Delete">Delete</a>
+                                                <a href="holidayActions?idHoliday=${holiday.idHoliday}" class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" uk-tooltip="Edit">Edit</a>
+                                                <a href="holidayActions?idHoliday=${holiday.idHoliday}" class="uk-icon-link" uk-icon="trash" uk-tooltip="Delete">Delete</a>
                                             </td>
                                         </tr>
                                     </tbody>
