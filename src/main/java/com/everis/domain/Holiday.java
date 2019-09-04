@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "Holiday")
@@ -17,27 +18,27 @@ public class Holiday implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
-	@Column(name = "idHoliday")
+    @GeneratedValue(strategy = IDENTITY)
+	@Column(name = "idholiday", unique = true, nullable = false)
 	private Integer idHoliday;
 
-	@Column(name = "refHoliday")
+	@Column(name = "refholiday")
 	private String refHoliday;
 
-	@Column(name = "dateRequest")
+	@Column(name = "daterequest")
 	private Date dateRequest;
 
-	@Column(name = "startDate")
+	@Column(name = "startdate")
 	private Date startDate;
 
-	@Column(name = "endDate")
+	@Column(name = "enddate")
 	private Date endDate;
 
 	@Column(name = "duration")
 	private float duration;
 
 	@ManyToOne
-	@JoinColumn(name = "idEmployee")
+	@JoinColumn(name = "idemployee")
 	private Employee employee;
 
 	@Column(name = "status")
@@ -45,13 +46,14 @@ public class Holiday implements java.io.Serializable {
 
 	@Column(name = "comment")
 	private String comment;
+	
+	@Column(name = "type")
+	private String type;
 
 	public Holiday() {
 	}
 
-	public Holiday(Integer idHoliday, String refHoliday, Date dateRequest, Date startDate, Date endDate, float duration,
-			Employee employee, String status, String comment) {
-		super();
+	public Holiday(Integer idHoliday, String refHoliday, Date dateRequest, Date startDate, Date endDate, float duration, Employee employee) {
 		this.idHoliday = idHoliday;
 		this.refHoliday = refHoliday;
 		this.dateRequest = dateRequest;
@@ -59,8 +61,7 @@ public class Holiday implements java.io.Serializable {
 		this.endDate = endDate;
 		this.duration = duration;
 		this.employee = employee;
-		this.status = status;
-		this.comment = comment;
+
 	}
 
 	public Integer getIdHoliday() {
@@ -135,4 +136,12 @@ public class Holiday implements java.io.Serializable {
 		this.comment = comment;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 }

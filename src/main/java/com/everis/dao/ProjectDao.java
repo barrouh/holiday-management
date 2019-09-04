@@ -11,14 +11,14 @@ import com.everis.domain.Project;
  */
 public interface ProjectDao {
 
-	int addProject(Project project);
+	void addProject(Project project);
 
-	int updateProject(Project project);
+	void updateProject(Project project);
 
 	Project getProjectById(String projectId);
 
 	List<Project> getAllProjects();
 
-	int deleteProject(String projectId);
+	void deleteProject(String projectId);
 
 }

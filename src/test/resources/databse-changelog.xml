@@ -35,7 +35,7 @@
     </changeSet>
     <changeSet author="barrouh (generated)" id="1564175690064-2">
         <createTable schemaName="HMW_SCHEMA" tableName="Holiday">
-            <column name="idholiday" type="INT">
+            <column autoIncrement="true" name="idholiday" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column name="refholiday" type="VARCHAR(255)">
@@ -108,7 +108,20 @@
         <addForeignKeyConstraint baseTableSchemaName="HMW_SCHEMA" baseColumnNames="idproject" baseTableName="Employee" constraintName="fk_project" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="idproject" referencedTableName="Project"/>
     </changeSet>
     
-     <changeSet author="barrouh (generated)" id="1564175690064-13">
+    <changeSet author="liquibase-docs" id="createSequence-example">
+    	<createSequence catalogName="Holiday" cycle="false" incrementBy="1" ordered="true" schemaName="HMW_SCHEMA" sequenceName="hibernate_sequence" startValue="0" />
+	</changeSet>
+    
+    <changeSet author="barrouh (generated)" id="1564175690064-13">
+		<comment>Load Project Table</comment>
+		<loadData schemaName="HMW_SCHEMA" tableName="Project"  file="data/Project.csv" encoding="UTF-8" separator=",">
+		    <column name="idproject" type="STRING"/>
+			<column name="projectname" type="STRING"/>
+            <column name="description" type="STRING"/>
+		</loadData>
+	</changeSet>
+    
+     <changeSet author="barrouh (generated)" id="1564175690064-14">
 		<comment>Load Employee Table</comment>
 		<loadData schemaName="HMW_SCHEMA" tableName="Employee"  file="data/Employee.csv" encoding="UTF-8" separator=",">
 		    <column name="idemployee" type="NUMERIC"/>
@@ -125,7 +138,7 @@
 		</loadData>
 	</changeSet>
 	
-	 <changeSet author="barrouh (generated)" id="1564175690064-14">
+	 <changeSet author="barrouh (generated)" id="1564175690064-15">
 		<comment>Load Holiday Table</comment>
 		<loadData schemaName="HMW_SCHEMA" tableName="Holiday"  file="data/Holiday.csv" encoding="UTF-8" separator=",">
 		    <column name="idholiday" type="NUMERIC"/>
@@ -138,15 +151,6 @@
             <column name="status" type="STRING"/>
             <column name="comment" type="STRING"/>
             <column name="type" type="STRING"/>
-		</loadData>
-	</changeSet>
-	
-	<changeSet author="barrouh (generated)" id="1564175690064-15">
-		<comment>Load Project Table</comment>
-		<loadData schemaName="HMW_SCHEMA" tableName="Project"  file="data/Project.csv" encoding="UTF-8" separator=",">
-		    <column name="idproject" type="STRING"/>
-			<column name="projectname" type="STRING"/>
-            <column name="description" type="STRING"/>
 		</loadData>
 	</changeSet>
 	

@@ -28,97 +28,97 @@ public class HolidayManagementServiceImpl implements HolidayManagementService, H
 	private HolidayManagementDaoImpl holidayManagementDao;
 
 	@Override
-	@Transactional 
-	public int addEmployee(Employee employee) {
-		return holidayManagementDao.addEmployee(employee);
+	@Transactional
+	public void addEmployee(Employee employee) {
+		holidayManagementDao.addEmployee(employee);
 	}
 
 	@Override
-	@Transactional 
-	public int updateEmployee(Employee employee) {
-		return holidayManagementDao.updateEmployee(employee);
+	@Transactional
+	public void updateEmployee(Employee employee) {
+		holidayManagementDao.updateEmployee(employee);
 	}
 
 	@Override
-	@Transactional 
+	@Transactional
 	public Employee getEmployeeById(Integer idemployee) {
 		return holidayManagementDao.getEmployeeById(idemployee);
 	}
 
 	@Override
-	@Transactional 
+	@Transactional
 	public List<Employee> getAllEmployees() {
 		return holidayManagementDao.getAllEmployees();
 	}
 
 	@Override
-	@Transactional 
-	public int deleteEmployee(String employeeId) {
-		return holidayManagementDao.deleteEmployee(employeeId);
+	@Transactional
+	public void deleteEmployee(Integer employeeId) {
+		holidayManagementDao.deleteEmployee(employeeId);
 	}
 
 	@Override
-	@Transactional 
-	public int addHoliday(Holiday holiday) {
-		return holidayManagementDao.addHoliday(holiday);
+	@Transactional
+	public void addHoliday(Holiday holiday) {
+		holidayManagementDao.addHoliday(holiday);
 	}
 
 	@Override
-	@Transactional 
-	public int updateHoliday(Holiday holiday) {
-		return holidayManagementDao.updateHoliday(holiday);
+	@Transactional
+	public void updateHoliday(Holiday holiday) {
+		holidayManagementDao.updateHoliday(holiday);
 	}
 
 	@Override
-	@Transactional 
-	public Holiday getHolidayById(String holidayId) {
+	@Transactional
+	public Holiday getHolidayById(Integer holidayId) {
 		return holidayManagementDao.getHolidayById(holidayId);
 	}
 
 	@Override
-	@Transactional 
+	@Transactional
 	public List<Holiday> getAllHolidays() {
 		return holidayManagementDao.getAllHolidays();
 	}
 
 	@Override
-	@Transactional 
-	public int deleteHoliday(String holidayId) {
-		return holidayManagementDao.deleteHoliday(holidayId);
+	@Transactional
+	public void deleteHoliday(Integer holidayId) {
+		holidayManagementDao.deleteHoliday(holidayId);
 	}
 
 	@Override
-	@Transactional 
-	public int addProject(Project project) {
-		return holidayManagementDao.addProject(project);
+	@Transactional
+	public void addProject(Project project) {
+		holidayManagementDao.addProject(project);
 	}
 
 	@Override
-	@Transactional 
-	public int updateProject(Project project) {
-		return holidayManagementDao.updateProject(project);
+	@Transactional
+	public void updateProject(Project project) {
+		holidayManagementDao.updateProject(project);
 	}
 
 	@Override
-	@Transactional 
+	@Transactional
 	public Project getProjectById(String projectId) {
 		return holidayManagementDao.getProjectById(projectId);
 	}
 
 	@Override
-	@Transactional 
+	@Transactional
 	public List<Project> getAllProjects() {
 		return holidayManagementDao.getAllProjects();
 	}
 
 	@Override
-	@Transactional 
-	public int deleteProject(String projectId) {
-		return holidayManagementDao.deleteProject(projectId);
+	@Transactional
+	public void deleteProject(String projectId) {
+		holidayManagementDao.deleteProject(projectId);
 	}
 
 	@Override
-	@Transactional 
+	@Transactional
 	public Employee logInEmployee(String username, String password) {
 		return holidayManagementDao.logInEmployee(username, password);
 	}

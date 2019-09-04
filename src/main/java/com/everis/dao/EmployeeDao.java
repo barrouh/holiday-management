@@ -11,14 +11,14 @@ import com.everis.domain.Employee;
  */
 public interface EmployeeDao {
 
-	int addEmployee(Employee employee);
+	void addEmployee(Employee employee);
 
-	int updateEmployee(Employee employee);
+	void updateEmployee(Employee employee);
 
 	Employee getEmployeeById(Integer employeeId);
 	
 	List<Employee> getAllEmployees();
 
-	int deleteEmployee(String employeeId);
+	void deleteEmployee(Integer employeeId);
 
 }

@@ -11,14 +11,14 @@ import com.everis.domain.Holiday;
  */
 public interface HolidayDao {
 
-	int addHoliday(Holiday holiday);
+	void addHoliday(Holiday holiday);
 
-	int updateHoliday(Holiday holiday);
+	void updateHoliday(Holiday holiday);
 
-	Holiday getHolidayById(String holidayId);
+	Holiday getHolidayById(Integer holidayId);
 
 	List<Holiday> getAllHolidays();
 
-	int deleteHoliday(String holidayId);
+	void deleteHoliday(Integer holidayId);
 
 }

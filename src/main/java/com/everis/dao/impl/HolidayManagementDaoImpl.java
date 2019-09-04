@@ -36,117 +36,96 @@ public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDa
 	}
 
 	@Override
-	public int addEmployee(Employee employee) {
+	public void addEmployee(Employee employee) {
 		getSession().save(employee);
-		return 0;
 	}
 
 	@Override
-	public int updateEmployee(Employee employee) {
+	public void updateEmployee(Employee employee) {
 		getSession().update(employee);
-		return 0;
 	}
 
 	@Override
 	public Employee getEmployeeById(Integer employeeId) {
-		Employee employee = (Employee) getSession().get(Employee.class, employeeId);
-		return employee;
+		return getSession().get(Employee.class, employeeId);
 	}
 
 	@Override
 	public List<Employee> getAllEmployees() {
-		
-		  Query <Employee> queryResult = getSession().createQuery("from Employee",Employee.class);
-		     
-		  
+		Query<Employee> queryResult = getSession().createQuery("from Employee", Employee.class);
 		return queryResult.list();
 	}
 
 	@Override
-	public int deleteEmployee(String employeeId) {
-		getSession().delete(employeeId);
-		return 0;
+	public void deleteEmployee(Integer employeeId) {
+		getSession().delete(getEmployeeById(employeeId));
 	}
 
 	@Override
-	public int addHoliday(Holiday holiday) {
+	public void addHoliday(Holiday holiday) {
 		getSession().save(holiday);
-		return 0;
 	}
 
 	@Override
-	public int updateHoliday(Holiday holiday) {
+	public void updateHoliday(Holiday holiday) {
 		getSession().update(holiday);
-		return 0;
 	}
 
 	@Override
-	public Holiday getHolidayById(String holidayId) {
-		Holiday holiday = (Holiday) getSession().getIdentifier(holidayId);
-		return holiday;
+	public Holiday getHolidayById(Integer holidayId) {
+		return getSession().get(Holiday.class, holidayId);
 	}
 
 	@Override
 	public List<Holiday> getAllHolidays() {
-		 Query <Holiday> queryResult = getSession().createQuery("from Holiday",Holiday.class);
-	    
-			return queryResult.list();
+		Query<Holiday> queryResult = getSession().createQuery("from Holiday", Holiday.class);
+		return queryResult.list();
 	}
 
 	@Override
-	public int deleteHoliday(String holidayId) {
-		getSession().delete(holidayId);
-		return 0;
+	public void deleteHoliday(Integer holidayId) {
+		getSession().delete(getHolidayById(holidayId));
 	}
 
 	@Override
-	public int addProject(Project project) {
+	public void addProject(Project project) {
 		getSession().save(project);
-		return 0;
 	}
 
 	@Override
-	public int updateProject(Project project) {
-		getSession().update(project);	
-		return 0;
+	public void updateProject(Project project) {
+		getSession().update(project);
 	}
 
 	@Override
 	public Project getProjectById(String projectId) {
-		
-		Project project = (Project) getSession().get(Project.class, projectId);
-		return project;
+		return getSession().get(Project.class, projectId);
 	}
 
 	@Override
 	public List<Project> getAllProjects() {
-		Query <Project> queryResult = getSession().createQuery("from Project",Project.class);
-	    
+		Query<Project> queryResult = getSession().createQuery("from Project", Project.class);
 		return queryResult.list();
-		
 	}
 
 	@Override
-	public int deleteProject(String projectId) {
-		getSession().delete(projectId);
-		return 0;
+	public void deleteProject(String projectId) {
+		getSession().delete(getProjectById(projectId));
 	}
 
 	@Override
 	public Employee logInEmployee(String username, String password) {
 		CriteriaBuilder builder = getSession().getCriteriaBuilder();
-        CriteriaQuery<Employee> query = builder.createQuery(Employee.class);
-        Root<Employee> root = query.from(Employee.class);
-        query.select(root).where(builder.equal(root.get("username"), username));
-        query.select(root).where(builder.equal(root.get("password"), password));
-        Query<Employee> q = getSession().createQuery(query);
-        if(!q.list().isEmpty()) {
-        	return q.getSingleResult();
-        }else {
-        	return null;
-        }
+		CriteriaQuery<Employee> query = builder.createQuery(Employee.class);
+		Root<Employee> root = query.from(Employee.class);
+		query.select(root).where(builder.equal(root.get("username"), username));
+		query.select(root).where(builder.equal(root.get("password"), password));
+		Query<Employee> q = getSession().createQuery(query);
+		if (!q.list().isEmpty()) {
+			return q.getSingleResult();
+		} else {
+			return null;
+		}
 	}
 
-	
-	
 }

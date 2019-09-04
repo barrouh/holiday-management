@@ -12,7 +12,7 @@ public class Project implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "idProject")
+	@Column(name = "idproject")
 	private String idProject;
 
 	@Column(name = "projectname")

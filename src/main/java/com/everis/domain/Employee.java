@@ -40,17 +40,17 @@ public class Employee implements java.io.Serializable {
 	private String grade;
 
 	@ManyToOne
-	@JoinColumn(name = "idProject")
+	@JoinColumn(name = "idproject")
 	private Project project;
 
 	@ManyToOne
 	@JoinColumn(name = "idsupervisor")
 	private Employee supervisor;
 
-	@Column(name = "initialBalance")
+	@Column(name = "initialbalance")
 	private float initialBalance;
 
-	@Column(name = "currentBalance")
+	@Column(name = "currentbalance")
 	private float currentBalance;
 
 	@OneToMany(targetEntity = Holiday.class, mappedBy = "employee", fetch = FetchType.LAZY)
@@ -61,8 +61,7 @@ public class Employee implements java.io.Serializable {
 	}
 
 	public Employee(Integer idEmployee, String username, String password, String firstName, String lastName,
-			String mailAdress, String grade, Project project, Employee supervisor, float initialBalance,
-			float currentBalance, List<Holiday> holidays) {
+			String mailAdress, String grade, Project project, Employee supervisor, float initialBalance, float currentBalance) {
 		this.idEmployee = idEmployee;
 		this.username = username;
 		this.password = password;
@@ -74,7 +73,6 @@ public class Employee implements java.io.Serializable {
 		this.supervisor = supervisor;
 		this.initialBalance = initialBalance;
 		this.currentBalance = currentBalance;
-		this.holidays = holidays;
 	}
 
 	public Integer getIdEmployee() {

@@ -42,6 +42,8 @@
 			    <prop key="hibernate.default_schema">${_HMW_DB_SCHEMA}</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hbm2ddl.auto">update</prop>
+				
 			</props>
 		</property>
 	</bean>
