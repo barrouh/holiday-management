@@ -17,17 +17,17 @@
                 </div>
                 <form method="POST" action="/requestHoliday" class="">
                     <div class="uk-margin">
-                        <input class="uk-input" name="startDate" type="datetime-local" placeholder="<spring:message code="holiday.start.date" />">
+                        <input class="uk-input" name="startDate" type="date" placeholder="<spring:message code="holiday.start.date" />">
                     </div>
                     <div class="uk-margin">
-                        <input class="uk-input" name="endDate" type="datetime-local" placeholder="<spring:message code="holiday.end.date" />">
+                        <input class="uk-input" name="endDate" type="date" placeholder="<spring:message code="holiday.end.date" />">
                     </div>
                     <div class="uk-margin">
                         <input class="uk-input" name="duration" type="number" placeholder="<spring:message code="holiday.duration" />">
                     </div>
                     <hr>
                     <div class="uk-align-right">
-                        <button type="buttons" class="uk-button uk-button-default" id="form-button-cancel-personal">
+                        <button type="button" class="uk-button uk-button-default" id="form-button-cancel-personal">
                             <spring:message code="button.cancel" />
                         </button>
                         <button type="submit" class="uk-button uk-button-primary" id="form-button-add-personal">
