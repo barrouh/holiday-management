@@ -15,10 +15,10 @@ public interface HolidayDao {
 
 	void updateHoliday(Holiday holiday);
 
-	Holiday getHolidayById(Integer holidayId);
+	Holiday getHolidayByRef(String holidayRef);
 
 	List<Holiday> getAllHolidays();
 
-	void deleteHoliday(Integer holidayId);
+	void deleteHoliday(String holidayRef);
 
 }

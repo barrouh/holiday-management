@@ -26,7 +26,7 @@
 							code="header.title" /></a>
 							<span class="logged-user" id="header-title-personal">
 				  <c:if test = "${sessionScope.userApp.logged}">
-				         <span uk-icon="icon: user; ratio: 1.5"></span>
+                         <!-- <span uk-icon="icon: user; ratio: 1.5"></span> -->
 			             <span><c:out value = "${sessionScope.userApp.employee.username}"/></span>
 			             <a href="/logout" uk-icon="icon:  sign-out; ratio: 1.5"></a>
 			      </c:if>

@@ -7,7 +7,7 @@
         <div class="uk-section uk-section-xsmall uk-section-muted uk-animation-fade">
             <div class="uk-container uk-container-large uk-width-5-6 uk-section-default uk-box-shadow-medium uk-padding">
                 <div>
-                    <a href="/requestHoliday" class="uk-icon-link uk-margin-small-right uk-align-right" uk-icon="icon: plus-circle; ratio: 2" uk-tooltip="Add a new employee"></a>
+                    <a href="/requestHoliday" class="uk-icon-link uk-margin-small-right uk-align-right" uk-icon="icon: plus-circle; ratio: 2" uk-tooltip="Request a new Holiday"></a>
                     <h2 class="uk-heading-line">
 				<spring:message code="holidays.header" />
 			</h2>

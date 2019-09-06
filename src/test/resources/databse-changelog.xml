@@ -35,9 +35,6 @@
     </changeSet>
     <changeSet author="barrouh (generated)" id="1564175690064-2">
         <createTable schemaName="HMW_SCHEMA" tableName="Holiday">
-            <column autoIncrement="true" name="idholiday" type="INT">
-                <constraints nullable="false"/>
-            </column>
             <column name="refholiday" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
@@ -78,7 +75,7 @@
         <addPrimaryKey columnNames="idemployee" constraintName="PRIMARYEmployee" tableName="Employee"/>
     </changeSet>
     <changeSet author="barrouh (generated)" id="1564175690064-5">
-        <addPrimaryKey columnNames="idholiday" constraintName="PRIMARYHoliday" tableName="Holiday"/>
+        <addPrimaryKey columnNames="refholiday" constraintName="PRIMARYHoliday" tableName="Holiday"/>
     </changeSet>
     <changeSet author="barrouh (generated)" id="1564175690064-6">
         <addPrimaryKey columnNames="idproject" constraintName="PRIMARYProject" tableName="Project"/>
@@ -141,7 +138,6 @@
 	 <changeSet author="barrouh (generated)" id="1564175690064-15">
 		<comment>Load Holiday Table</comment>
 		<loadData schemaName="HMW_SCHEMA" tableName="Holiday"  file="data/Holiday.csv" encoding="UTF-8" separator=",">
-		    <column name="idholiday" type="NUMERIC"/>
 			<column name="refholiday" type="STRING"/>
             <column name="daterequest" type="timestamp"/>
             <column name="startdate" type="timestamp"/>

@@ -30,8 +30,7 @@ CREATE TABLE Employee(
 engine = innodb DEFAULT charset = utf8 COLLATE = utf8_bin;
 
 CREATE TABLE Holiday(
-                          idholiday   INT(20) NOT NULL PRIMARY KEY,
-                          refholiday  VARCHAR(255) collate utf8_bin NOT NULL,
+                          refholiday  VARCHAR(255) NOT NULL PRIMARY KEY,
                           daterequest date NOT NULL,
                           startdate   date NOT NULL,
                           enddate     date NOT NULL,

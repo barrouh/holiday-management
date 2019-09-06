@@ -1,5 +1,7 @@
 package com.everis.web;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,16 +10,16 @@ import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.everis.domain.Employee;
 import com.everis.domain.Holiday;
+import com.everis.domain.HolidayStatus;
 import com.everis.domain.UserApp;
 import com.everis.service.impl.HolidayManagementServiceImpl;
 
@@ -37,18 +39,21 @@ public class MainController {
 	
 	private static final String MAIN_VIEW_NAME = "index";
 	
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
+	
 	public void printRequest(HttpServletRequest request) {
 		LOGGER.info("Receiving request from client with IP address: " + Tools.getClientIpAddr(request));
 	}
-
-	@RequestMapping(value = "/", method = { RequestMethod.GET, RequestMethod.POST })
+	
+	@GetMapping("/")
+	@PostMapping("/")
 	public ModelAndView homePage(HttpServletRequest request) {
 		printRequest(request);
 		ModelAndView model = new ModelAndView();
 		model.setViewName(MAIN_VIEW_NAME);
 		return model;
 	}
-	
+
 	@GetMapping("/login")
 	public ModelAndView login(HttpServletRequest request) {
 		printRequest(request);
@@ -144,19 +149,27 @@ public class MainController {
 		return model;
 	}
 	
-	@PostMapping("/requestHoliday")
-	public ModelAndView requestHoliday(HttpServletRequest request,@RequestParam(required = true) Date startDate, @RequestParam(required = true) Date endDate, @RequestParam(required = true) float duration) {
+	@PostMapping(value="/requestHoliday",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ModelAndView requestHoliday(HttpServletRequest request, String startDate, String endDate, String duration) throws ParseException {
 		printRequest(request);
+		
 		Employee employee = ((UserApp)request.getSession().getAttribute("userApp")).getEmployee();
+		Date startDateC = sdf.parse(startDate);
+		Date endDateC = sdf.parse(endDate);
+		float durationC = Float.parseFloat(duration);
+		
 		Holiday holiday = new Holiday();
-		holiday.setEmployee(employee);
+		holiday.setRefHoliday("HOLIDAY"+new Date().getTime());
 		holiday.setDateRequest(new Date());
-		holiday.setStartDate(startDate);
-		holiday.setEndDate(endDate);
-		holiday.setDuration(duration);
+		holiday.setStartDate(startDateC);
+		holiday.setEndDate(endDateC);
+		holiday.setDuration(durationC);
+		holiday.setEmployee(employee);
+		holiday.setStatus(HolidayStatus.PENDING.getValue());
+		
 		holidayManagementService.addHoliday(holiday);
 		ModelAndView model = new ModelAndView();
-		model.setViewName("views/holiday/requestHoliday");
+		model.setViewName("views/holiday/holidays");
 		return model;
 	}
 	

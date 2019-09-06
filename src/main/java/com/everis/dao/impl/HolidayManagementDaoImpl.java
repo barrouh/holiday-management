@@ -72,8 +72,8 @@ public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDa
 	}
 
 	@Override
-	public Holiday getHolidayById(Integer holidayId) {
-		return getSession().get(Holiday.class, holidayId);
+	public Holiday getHolidayByRef(String holidayRef) {
+		return getSession().get(Holiday.class, holidayRef);
 	}
 
 	@Override
@@ -83,8 +83,8 @@ public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDa
 	}
 
 	@Override
-	public void deleteHoliday(Integer holidayId) {
-		getSession().delete(getHolidayById(holidayId));
+	public void deleteHoliday(String holidayRef) {
+		getSession().delete(getHolidayByRef(holidayRef));
 	}
 
 	@Override

@@ -4,12 +4,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "Holiday")
@@ -18,10 +16,6 @@ public class Holiday implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = IDENTITY)
-	@Column(name = "idholiday", unique = true, nullable = false)
-	private Integer idHoliday;
-
 	@Column(name = "refholiday")
 	private String refHoliday;
 
@@ -53,23 +47,13 @@ public class Holiday implements java.io.Serializable {
 	public Holiday() {
 	}
 
-	public Holiday(Integer idHoliday, String refHoliday, Date dateRequest, Date startDate, Date endDate, float duration, Employee employee) {
-		this.idHoliday = idHoliday;
+	public Holiday(String refHoliday, Date dateRequest, Date startDate, Date endDate, float duration, Employee employee) {
 		this.refHoliday = refHoliday;
 		this.dateRequest = dateRequest;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.duration = duration;
 		this.employee = employee;
-
-	}
-
-	public Integer getIdHoliday() {
-		return idHoliday;
-	}
-
-	public void setIdHoliday(Integer idHoliday) {
-		this.idHoliday = idHoliday;
 	}
 
 	public String getRefHoliday() {

@@ -125,16 +125,16 @@ public class HolidayManagementServiceTest {
 
 	@Test
 	public void updateHolidayTest() {
-		Holiday hld = holidayManagementService.getHolidayById(5665);
+		Holiday hld = holidayManagementService.getHolidayByRef("BRH2");
 		hld.setDuration(10);
 		holidayManagementService.updateHoliday(hld);
-		hld = holidayManagementService.getHolidayById(5665);
+		hld = holidayManagementService.getHolidayByRef("BRH2");
 		assertNotEquals(10, hld.getDuration());
 	}
 
 	@Test
 	public void getHolidayByIdTest() {
-		Holiday hld = holidayManagementService.getHolidayById(5665);
+		Holiday hld = holidayManagementService.getHolidayByRef("BRH1");
 		assertNotNull(hld);
 	}
 
@@ -146,7 +146,7 @@ public class HolidayManagementServiceTest {
 
 	@Test
 	public void deleteHolidayTest() {
-		holidayManagementService.deleteHoliday(454552);
+		holidayManagementService.deleteHoliday("BRH2");
 	}
 
 }

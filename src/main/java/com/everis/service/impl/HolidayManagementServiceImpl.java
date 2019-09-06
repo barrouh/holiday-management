@@ -71,8 +71,8 @@ public class HolidayManagementServiceImpl implements HolidayManagementService, H
 
 	@Override
 	@Transactional
-	public Holiday getHolidayById(Integer holidayId) {
-		return holidayManagementDao.getHolidayById(holidayId);
+	public Holiday getHolidayByRef(String holidayRef) {
+		return holidayManagementDao.getHolidayByRef(holidayRef);
 	}
 
 	@Override
@@ -83,8 +83,8 @@ public class HolidayManagementServiceImpl implements HolidayManagementService, H
 
 	@Override
 	@Transactional
-	public void deleteHoliday(Integer holidayId) {
-		holidayManagementDao.deleteHoliday(holidayId);
+	public void deleteHoliday(String holidayRef) {
+		holidayManagementDao.deleteHoliday(holidayRef);
 	}
 
 	@Override
