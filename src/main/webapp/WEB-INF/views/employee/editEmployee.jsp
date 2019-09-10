@@ -1,7 +1,9 @@
-<%-- edit employee--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/include.jsp"%>
 
-    <%@ include file="/WEB-INF/views/include.jsp"%>
-
+<tags:header />
+<body>
+      <c:if test = "${sessionScope.userApp.logged}">
         <section class="uk-section uk-section-muted uk-animation-fade">
             <div class="uk-container uk-width-1-3 uk-section-default uk-box-shadow-xlarge uk-padding">
                 <div>
@@ -55,3 +57,9 @@
                 </form>
             </div>
         </section>
+       </c:if>
+         <c:if test = "${!sessionScope.userApp.logged}">
+           <c:redirect url="/"/>
+         </c:if>
+        </body>
+<tags:footer />

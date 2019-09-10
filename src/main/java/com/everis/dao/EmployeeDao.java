@@ -3,6 +3,7 @@ package com.everis.dao;
 import java.util.List;
 
 import com.everis.domain.Employee;
+import com.everis.domain.EmployeeGrade;
 
 /**
  * 
@@ -18,7 +19,11 @@ public interface EmployeeDao {
 	Employee getEmployeeById(Integer employeeId);
 	
 	List<Employee> getAllEmployees();
+	
+	List<Employee> getEmployeesByGrade(EmployeeGrade grade);
 
 	void deleteEmployee(Integer employeeId);
+	
+	
 
 }

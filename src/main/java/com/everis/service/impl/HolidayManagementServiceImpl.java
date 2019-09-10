@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.everis.domain.Employee;
+import com.everis.domain.EmployeeGrade;
 import com.everis.domain.Holiday;
 import com.everis.domain.Project;
 import com.everis.dao.EmployeeDao;
@@ -121,5 +122,11 @@ public class HolidayManagementServiceImpl implements HolidayManagementService, H
 	@Transactional
 	public Employee logInEmployee(String username, String password) {
 		return holidayManagementDao.logInEmployee(username, password);
+	}
+
+	@Override
+	@Transactional
+	public List<Employee> getEmployeesByGrade(EmployeeGrade grade) {
+		return holidayManagementDao.getEmployeesByGrade(grade);
 	}
 }

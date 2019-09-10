@@ -56,13 +56,13 @@
                                             <td class="uk-text-truncate">${employer.firstName}</td>
                                             <td class="uk-text-truncate">${employer.lastName}</td>
                                             <td class="uk-text-truncate">${employer.username}</td>
-                                            <td class="uk-text-truncate">${employer.mailAdress}</td>
-                                            <td class="uk-text-truncate">${employer.grade}</td>
+                                            <td class="uk-text-nowrap">${employer.mailAdress}</td>
+                                            <td class="uk-text-nowrap">${employer.grade}</td>
                                             <td class="uk-text-truncate">${employer.project.projectName}</td>
                                             <td class="uk-text-truncate">${employer.supervisor}</td>
                                             <td class="uk-text-truncate">${employer.initialBalance}</td>
                                             <td class="uk-text-truncate">${employer.currentBalance}</td>
-                                            <td class="uk-text-truncate">
+                                            <td class="uk-text-nowrap">
                                                 <a href="editEmployee?idemployee=${employer.idEmployee}" class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" uk-tooltip="Edit">Edit</a>
                                                 <a href="editEmployee?idemployee=${employer.idEmployee}" class="uk-icon-link" uk-icon="trash" uk-tooltip="Delete">Delete</a>
                                             </td>

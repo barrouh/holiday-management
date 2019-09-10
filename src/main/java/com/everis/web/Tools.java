@@ -1,11 +1,12 @@
 package com.everis.web;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 public class Tools {
 	
-	private Tools() {}
-
 	private static final String[] IP_HEADER_CANDIDATES = { "X-Forwarded-For", "Proxy-Client-IP", "WL-Proxy-Client-IP",
 			"HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED", "HTTP_X_CLUSTER_CLIENT_IP", "HTTP_CLIENT_IP",
 			"HTTP_FORWARDED_FOR", "HTTP_FORWARDED", "HTTP_VIA", "REMOTE_ADDR" };
@@ -26,6 +27,12 @@ public class Tools {
 		}else {
 			return false;
 		}
+	}
+	
+	
+	public static String dateFormater(Date date) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
+		return sdf.format(date);
 	}
 
 }

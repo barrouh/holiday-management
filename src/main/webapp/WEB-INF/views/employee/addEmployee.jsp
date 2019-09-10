@@ -40,9 +40,6 @@
                     <div class="uk-margin">
                         <input class="uk-input" name="initialdays" type="text" placeholder="<spring:message code="employee.initial.days" />">
                     </div>
-                    <div class="uk-margin">
-                        <input class="uk-input" name="availabledays" type="text" placeholder="<spring:message code="employee.available.days" />">
-                    </div>
                     <hr>
                     <div class="uk-align-right">
                         <button type="buttons" class="uk-button uk-button-default" id="form-button-cancel-personal">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include.jsp"%>
+<jsp:useBean id="tools" class="com.everis.web.Tools"/>
 
 <tags:header />
 <body>
@@ -17,9 +18,6 @@
                         <table class="uk-table uk-table-hover uk-table-small uk-table-divider">
                             <thead id="table-th-personal">
                                 <tr>
-                                    <th>
-                                        <spring:message code="holiday.id" />
-                                    </th>
                                     <th>
                                         <spring:message code="holiday.reference" />
                                     </th>
@@ -53,18 +51,17 @@
                                 <c:forEach items="${holidays}" var="holiday">
                                     <tbody style="border: 1px solide black;">
                                         <tr>
-                                            <td class="uk-text-truncate">${holiday.idHoliday}</td>
-                                            <td class="uk-text-truncate">${holiday.refHoliday}</td>
-                                            <td class="uk-text-truncate">${holiday.dateRequest}</td>
-                                            <td class="uk-text-truncate">${holiday.startDate}</td>
-                                            <td class="uk-text-truncate">${holiday.endDate}</td>
+                                            <td class="uk-text-nowrap">${holiday.refHoliday}</td>
+                                            <td class="uk-text-truncate">${tools.dateFormater(holiday.dateRequest)}</td>
+                                            <td class="uk-text-truncate">${tools.dateFormater(holiday.startDate)}</td>
+                                            <td class="uk-text-truncate">${tools.dateFormater(holiday.endDate)}</td>
                                             <td class="uk-text-truncate">${holiday.duration}</td>
                                             <td class="uk-text-truncate">${holiday.status}</td>
                                             <td class="uk-text-truncate">${holiday.comment}</td>
                                             <td class="uk-text-truncate">${holiday.employee.username}</td>
-                                            <td class="uk-text-truncate">
-                                                <a href="holidayActions?idHoliday=${holiday.idHoliday}" class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" uk-tooltip="Edit">Edit</a>
-                                                <a href="holidayActions?idHoliday=${holiday.idHoliday}" class="uk-icon-link" uk-icon="trash" uk-tooltip="Delete">Delete</a>
+                                            <td class="uk-text-nowrap">
+                                                <a href="/holidayActions?approve=${holiday.refHoliday}" class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" uk-tooltip="Edit">Approve</a>
+                                                <a href="/holidayActions?reject=${holiday.refHoliday}" class="uk-icon-link" uk-icon="trash" uk-tooltip="Delete">Reject</a>
                                             </td>
                                         </tr>
                                     </tbody>

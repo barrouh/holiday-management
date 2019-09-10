@@ -2,6 +2,7 @@ package com.everis.web;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.everis.domain.Employee;
+import com.everis.domain.EmployeeGrade;
 import com.everis.domain.Holiday;
 import com.everis.domain.HolidayStatus;
 import com.everis.domain.UserApp;
@@ -97,7 +99,6 @@ public class MainController {
 	
 	@GetMapping("/editProject")
 	public ModelAndView editProject(HttpServletRequest request , @RequestParam(required = true) String idproject) {
-
 		printRequest(request);
 		ModelAndView model = new ModelAndView();
 		model.addObject("updatedProject",holidayManagementService.getProjectById(idproject));
@@ -117,8 +118,21 @@ public class MainController {
 	@GetMapping("/addEmployee")
 	public ModelAndView addEmployee(HttpServletRequest request) {
 		printRequest(request);
+		
 		ModelAndView model = new ModelAndView();
+		model.addObject("projects", holidayManagementService.getAllProjects());
+		model.addObject("supervisors", holidayManagementService.getEmployeesByGrade(EmployeeGrade.SUPERVISOR));
+		model.addObject("grads", Arrays.asList(EmployeeGrade.values()));
 		model.setViewName("views/employee/addEmployee");
+		return model;
+	}
+	
+	@PostMapping(value = "/addEmployee" ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ModelAndView addEmployeePost(HttpServletRequest request, String fNmae, String lName, String username, String email, String grade, String project, String supervisor, String initialDays) {
+		printRequest(request);
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("views/employee/employees");
 		return model;
 	}
 	
@@ -172,6 +186,26 @@ public class MainController {
 		model.setViewName("views/holiday/holidays");
 		return model;
 	}
+
+	@GetMapping("/holidayActions")
+	public ModelAndView holidayActions(HttpServletRequest request, String approve,  String reject) {
+		printRequest(request);
+		if(approve != null) {
+			Holiday holiday = holidayManagementService.getHolidayByRef(approve);
+			holiday.setStatus(HolidayStatus.APPROVED.getValue());
+			holidayManagementService.updateHoliday(holiday);
+		}else if(reject != null){
+			Holiday holiday = holidayManagementService.getHolidayByRef(reject);
+			holiday.setStatus(HolidayStatus.REJECTED.getValue());
+			holidayManagementService.updateHoliday(holiday);
+		}
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("views/holiday/holidays");
+		return model; 
+	}
+	
+	
 	
 	@GetMapping("/employers/holidays")
 	public ModelAndView holidaysByEmployee(HttpServletRequest request, @RequestParam(required = true) String idEmployee) {

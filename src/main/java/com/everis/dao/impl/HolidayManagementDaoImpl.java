@@ -17,6 +17,7 @@ import com.everis.dao.HolidayDao;
 import com.everis.dao.HolidayManagementDao;
 import com.everis.dao.ProjectDao;
 import com.everis.domain.Employee;
+import com.everis.domain.EmployeeGrade;
 import com.everis.domain.Holiday;
 import com.everis.domain.Project;
 
@@ -123,6 +124,20 @@ public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDa
 		Query<Employee> q = getSession().createQuery(query);
 		if (!q.list().isEmpty()) {
 			return q.getSingleResult();
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public List<Employee> getEmployeesByGrade(EmployeeGrade grade) {
+		CriteriaBuilder builder = getSession().getCriteriaBuilder();
+		CriteriaQuery<Employee> query = builder.createQuery(Employee.class);
+		Root<Employee> root = query.from(Employee.class);
+		query.select(root).where(builder.equal(root.get("grade"), grade.name()));
+		Query<Employee> q = getSession().createQuery(query);
+		if (!q.list().isEmpty()) {
+			return q.getResultList();
 		} else {
 			return null;
 		}

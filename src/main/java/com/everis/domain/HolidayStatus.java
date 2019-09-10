@@ -3,7 +3,7 @@ package com.everis.domain;
 public enum HolidayStatus {
 	
 	PENDING("Pending"),
-	ACCEPTED("Accepted"),
+	APPROVED("Approved"),
 	REJECTED("Rejected");
 	
 	 private String value;
