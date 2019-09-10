@@ -37,7 +37,7 @@ public class HolidayManagementServiceTest {
 	@Test
 	public void addProjectTest() {
 		Project epo = new Project();
-		epo.setIdProject("EPO_PGP");
+		epo.setProjectId("EPO_PGP");
 		epo.setProjectName("EPO");
 		epo.setDescription("PREG, PLEG, PIP5");
 		holidayManagementService.addProject(epo);
@@ -72,7 +72,7 @@ public class HolidayManagementServiceTest {
 	@Test
 	public void addEmployeeTest() {
 		Employee empl = new Employee();
-		empl.setIdEmployee(415545);
+		empl.setEmployeeId(415545);
 		empl.setUsername("mbr");
 		empl.setPassword("testpass");
 		empl.setFirstName("mohamed");

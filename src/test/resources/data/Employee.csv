@@ -1,3 +1,3 @@
-idemployee,firstname,lastname,username,password,mailadress,grade,idproject,idsupervisor,initialbalance,currentbalance
-1214,"Mohamed","barrouh","mbarrouh","testpass","mohamed@barrouh.com","developer","TEST",,18,18
-1215,"Khalil","test","ktest","testpass","khalil@barrouh.com","developer","TEST",,18,18
+employeeid,firstname,lastname,username,password,mailadress,grade,projectid,supervisorid,initialbalance,currentbalance,notifications
+1214,"Mohamed","barrouh","mbarrouh","testpass","mohamed@barrouh.com","developer","TEST",,18,18,false
+1215,"Khalil","test","ktest","testpass","khalil@barrouh.com","developer","TEST",,18,18,false

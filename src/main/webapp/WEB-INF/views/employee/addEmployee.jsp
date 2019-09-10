@@ -5,8 +5,6 @@
 <body>
 <c:if test = "${sessionScope.userApp.logged}">
 <%-- add new employee--%>
-    <%@ include file="/WEB-INF/views/include.jsp"%>
-
         <section class="uk-section uk-section-muted uk-animation-fade">
             <div class="uk-container uk-width-1-3 uk-section-default uk-box-shadow-xlarge uk-padding">
                 <div>
@@ -15,7 +13,7 @@
 			</h3>
             <hr>
                 </div>
-                <form method="POST" action="" class="">
+                <form method="POST" action="/addEmployee" class="">
                     <div class="uk-margin">
                         <input class="uk-input" name="firstname" type="text" placeholder="<spring:message code="employee.first.name" />">
                     </div>
@@ -29,20 +27,38 @@
                         <input class="uk-input" name="addressmail" type="text" placeholder="<spring:message code="employee.address.mail" />">
                     </div>
                     <div class="uk-margin">
-                        <input class="uk-input" name="grade" type="text" placeholder="<spring:message code="employee.grade" />">
+	                    <select class="uk-input" name="grade">
+	                    <c:if test="${not empty grads}">
+	                                <c:forEach items="${grads}" var="grad">
+	                                  <option value="${grad}">${grad}</option>
+	                                </c:forEach>
+	                            </c:if>
+						</select>
                     </div>
                     <div class="uk-margin">
-                        <input class="uk-input" name="project" type="text" placeholder="<spring:message code="employee.project" />">
+                      <select class="uk-input" name="project">
+	                    <c:if test="${not empty projects}">
+	                                <c:forEach items="${projects}" var="project">
+	                                  <option value="${project.projectId}">${project.projectName}</option>
+	                                </c:forEach>
+	                            </c:if>
+						</select>
                     </div>
                     <div class="uk-margin">
-                        <input class="uk-input" name="supervisor" type="text" placeholder="<spring:message code="employee.supervisor" />">
+                      <select class="uk-input" name="supervisor">
+	                    <c:if test="${not empty supervisors}">
+	                                <c:forEach items="${supervisors}" var="supervisor">
+	                                  <option value="${supervisor.username}">${supervisor.username}</option>
+	                                </c:forEach>
+	                            </c:if>
+						</select>
                     </div>
                     <div class="uk-margin">
                         <input class="uk-input" name="initialdays" type="text" placeholder="<spring:message code="employee.initial.days" />">
                     </div>
                     <hr>
                     <div class="uk-align-right">
-                        <button type="buttons" class="uk-button uk-button-default" id="form-button-cancel-personal">
+                        <button type=reset class="uk-button uk-button-default" id="form-button-cancel-personal">
                             <spring:message code="button.cancel" />
                         </button>
                         <button type="submit" class="uk-button uk-button-primary" id="form-button-add-personal">

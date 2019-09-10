@@ -12,8 +12,8 @@ public class Project implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "idproject")
-	private String idProject;
+	@Column(name = "projectid")
+	private String projectId;
 
 	@Column(name = "projectname")
 	private String projectName;
@@ -24,18 +24,18 @@ public class Project implements java.io.Serializable {
 	public Project() {
 	}
 
-	public Project(String idProject, String projectName, String description) {
-		this.idProject = idProject;
+	public Project(String projectId, String projectName, String description) {
+		this.projectId = projectId;
 		this.projectName = projectName;
 		this.description = description;
 	}
 
-	public String getIdProject() {
-		return idProject;
+	public String getProjectId() {
+		return projectId;
 	}
 
-	public void setIdProject(String idProject) {
-		this.idProject = idProject;
+	public void setProjectId(String projectId) {
+		this.projectId = projectId;
 	}
 
 	public String getProjectName() {

@@ -18,8 +18,8 @@ public class Employee implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "idemployee")
-	private Integer idEmployee;
+	@Column(name = "employeeid")
+	private Integer employeeId;
 
 	@Column(name = "username")
 	private String username;
@@ -40,11 +40,11 @@ public class Employee implements java.io.Serializable {
 	private String grade;
 
 	@ManyToOne
-	@JoinColumn(name = "idproject")
+	@JoinColumn(name = "projectid")
 	private Project project;
 
 	@ManyToOne
-	@JoinColumn(name = "idsupervisor")
+	@JoinColumn(name = "supervisorid")
 	private Employee supervisor;
 
 	@Column(name = "initialbalance")
@@ -52,6 +52,11 @@ public class Employee implements java.io.Serializable {
 
 	@Column(name = "currentbalance")
 	private float currentBalance;
+	
+	
+	@Column(name = "notifications")
+	private boolean notifications;
+	
 
 	@OneToMany(targetEntity = Holiday.class, mappedBy = "employee", fetch = FetchType.LAZY)
 	private List<Holiday> holidays;
@@ -60,9 +65,9 @@ public class Employee implements java.io.Serializable {
 
 	}
 
-	public Employee(Integer idEmployee, String username, String password, String firstName, String lastName,
+	public Employee(Integer employeeId, String username, String password, String firstName, String lastName,
 			String mailAdress, String grade, Project project, Employee supervisor, float initialBalance, float currentBalance) {
-		this.idEmployee = idEmployee;
+		this.employeeId = employeeId;
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
@@ -75,12 +80,12 @@ public class Employee implements java.io.Serializable {
 		this.currentBalance = currentBalance;
 	}
 
-	public Integer getIdEmployee() {
-		return idEmployee;
+	public Integer getEmployeeId() {
+		return employeeId;
 	}
 
-	public void setIdEmployee(Integer idEmployee) {
-		this.idEmployee = idEmployee;
+	public void setEmployeeId(Integer idEmployee) {
+		this.employeeId = idEmployee;
 	}
 
 	public String getUsername() {
@@ -161,6 +166,14 @@ public class Employee implements java.io.Serializable {
 
 	public void setCurrentBalance(float currentBalance) {
 		this.currentBalance = currentBalance;
+	}
+
+	public boolean isNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(boolean notifications) {
+		this.notifications = notifications;
 	}
 
 	public List<Holiday> getHolidays() {

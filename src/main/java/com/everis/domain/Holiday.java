@@ -32,7 +32,7 @@ public class Holiday implements java.io.Serializable {
 	private float duration;
 
 	@ManyToOne
-	@JoinColumn(name = "idemployee")
+	@JoinColumn(name = "employeeid")
 	private Employee employee;
 
 	@Column(name = "status")

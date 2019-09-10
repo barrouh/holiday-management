@@ -22,6 +22,7 @@ import com.everis.domain.Employee;
 import com.everis.domain.EmployeeGrade;
 import com.everis.domain.Holiday;
 import com.everis.domain.HolidayStatus;
+import com.everis.domain.Project;
 import com.everis.domain.UserApp;
 import com.everis.service.impl.HolidayManagementServiceImpl;
 
@@ -97,16 +98,59 @@ public class MainController {
 		return model;
 	}
 	
-	@GetMapping("/editProject")
-	public ModelAndView editProject(HttpServletRequest request , @RequestParam(required = true) String idproject) {
+	@GetMapping("/addProject")
+	public ModelAndView addProjectPost(HttpServletRequest request) {
 		printRequest(request);
 		ModelAndView model = new ModelAndView();
-		model.addObject("updatedProject",holidayManagementService.getProjectById(idproject));
+		model.setViewName("views/project/addProject");
+		return model;
+	}
+	
+	@PostMapping(value = "/addProject" ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ModelAndView addProjectPost(HttpServletRequest request , String projectId, String projectName, String projectDescription) {
+		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		Project project = new Project();
+		project.setProjectId(projectId);
+		project.setProjectName(projectName);
+		project.setDescription(projectDescription);
+		holidayManagementService.addProject(project);
+		model.setViewName("redirect:/projects");
+		return model;
+	}
+	
+	@GetMapping("/editProject")
+	public ModelAndView editProject(HttpServletRequest request , @RequestParam(required = true) String projectId) {
+		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		model.addObject("updatedProject",holidayManagementService.getProjectById(projectId));
 		model.setViewName("views/project/editProject");
 		return model;
 	}
 	
-	@GetMapping("/employers")
+	@GetMapping("/deleteProject")
+	public ModelAndView deleteProject(HttpServletRequest request , @RequestParam(required = true) String projectId) {
+		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		holidayManagementService.deleteProject(projectId);;
+		model.setViewName("redirect:/projects");
+		return model;
+	}
+	
+	@PostMapping(value = "/editProject" ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ModelAndView editProjectPost(HttpServletRequest request ,String oldProjectId, String projectId, String projectName, String projectDescription) {
+		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		Project project = holidayManagementService.getProjectById(oldProjectId);
+		project.setProjectId(projectId);
+		project.setProjectName(projectName);
+		project.setDescription(projectDescription);
+		holidayManagementService.updateProject(project);
+		model.setViewName("redirect:/projects");
+		return model;
+	}
+	
+	@GetMapping("/employees")
 	public ModelAndView employees(HttpServletRequest request) {
 		printRequest(request);
 		ModelAndView model = new ModelAndView();
@@ -118,7 +162,6 @@ public class MainController {
 	@GetMapping("/addEmployee")
 	public ModelAndView addEmployee(HttpServletRequest request) {
 		printRequest(request);
-		
 		ModelAndView model = new ModelAndView();
 		model.addObject("projects", holidayManagementService.getAllProjects());
 		model.addObject("supervisors", holidayManagementService.getEmployeesByGrade(EmployeeGrade.SUPERVISOR));
@@ -132,16 +175,15 @@ public class MainController {
 		printRequest(request);
 		
 		ModelAndView model = new ModelAndView();
-		model.setViewName("views/employee/employees");
+		model.setViewName("redirect:/employees");
 		return model;
 	}
 	
 	@GetMapping("/editEmployee")
-	public ModelAndView editEmployee(HttpServletRequest request , @RequestParam(required = true) Integer idemployee) {
-
+	public ModelAndView editEmployee(HttpServletRequest request , @RequestParam(required = true) Integer employeeId) {
 		printRequest(request);
 		ModelAndView model = new ModelAndView();
-		model.addObject("updatedEmployee",holidayManagementService.getEmployeeById(idemployee));
+		model.addObject("updatedEmployee",holidayManagementService.getEmployeeById(employeeId));
 		model.setViewName("views/employee/editEmployee");
 		return model;
 	}
@@ -183,7 +225,7 @@ public class MainController {
 		
 		holidayManagementService.addHoliday(holiday);
 		ModelAndView model = new ModelAndView();
-		model.setViewName("views/holiday/holidays");
+		model.setViewName("redirect:/holidays");
 		return model;
 	}
 
@@ -201,7 +243,7 @@ public class MainController {
 		}
 		
 		ModelAndView model = new ModelAndView();
-		model.setViewName("views/holiday/holidays");
+		model.setViewName("redirect:/holidays");
 		return model; 
 	}
 	

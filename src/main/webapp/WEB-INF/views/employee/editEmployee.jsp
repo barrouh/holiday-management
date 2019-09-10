@@ -47,7 +47,7 @@
                     </div>
                     <hr>
                     <div class="uk-align-right">
-                        <button type="button" class="uk-button uk-button-default" id="form-button-cancel-personal">
+                        <button type="reset" class="uk-button uk-button-default" id="form-button-cancel-personal">
                             <spring:message code="button.cancel" />
                         </button>
                         <button type="submit" class="uk-button uk-button-primary" id="form-button-add-personal">

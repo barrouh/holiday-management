@@ -63,8 +63,8 @@
                                             <td class="uk-text-truncate">${employer.initialBalance}</td>
                                             <td class="uk-text-truncate">${employer.currentBalance}</td>
                                             <td class="uk-text-nowrap">
-                                                <a href="editEmployee?idemployee=${employer.idEmployee}" class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" uk-tooltip="Edit">Edit</a>
-                                                <a href="editEmployee?idemployee=${employer.idEmployee}" class="uk-icon-link" uk-icon="trash" uk-tooltip="Delete">Delete</a>
+                                                <a href="editEmployee?employeeId=${employer.employeeId}" class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" uk-tooltip="Edit">Edit</a>
+                                                <a href="editEmployee?employeeId=${employer.employeeId}" class="uk-icon-link" uk-icon="trash" uk-tooltip="Delete">Delete</a>
                                             </td>
                                         </tr>
                                     </tbody>

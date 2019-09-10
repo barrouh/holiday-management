@@ -9,7 +9,7 @@
 				  </li>
 				</h3>
                 <li>
-                    <a href="/employers">
+                    <a href="/employees">
                         <spring:message code="navbar.menu.employees.list" />
                     </a>
                 </li>
@@ -48,12 +48,12 @@
 									code="navbar.menu.projects" /></li>
 						</h3>
                 <li>
-                    <a href="projects">
+                    <a href="/projects">
                         <spring:message code="navbar.menu.projects.list" />
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/addProject">
                         <spring:message code="navbar.menu.projects.add.new" />
                     </a>
                 </li>

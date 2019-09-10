@@ -10,7 +10,7 @@
             <div class="uk-margin">
                 <p>
                     Employee ID:
-                    <c:out value="${employee.idEmployee}" />
+                    <c:out value="${employee.employeeId}" />
                 </p>
             </div>
 
