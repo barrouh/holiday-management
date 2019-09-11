@@ -89,165 +89,165 @@ public class MainController {
 		return new ModelAndView("redirect:/");
 	}
 	
-	@GetMapping("/projects")
-	public ModelAndView projects(HttpServletRequest request) {
-		printRequest(request);
-		ModelAndView model = new ModelAndView();
-		model.addObject("projects", holidayManagementService.getAllProjects());
-		model.setViewName("views/project/projects");
-		return model;
-	}
+//	@GetMapping("/projects")
+//	public ModelAndView projects(HttpServletRequest request) {
+//		printRequest(request);
+//		ModelAndView model = new ModelAndView();
+//		model.addObject("projects", holidayManagementService.getAllProjects());
+//		model.setViewName("views/project/projects");
+//		return model;
+//	}
 	
-	@GetMapping("/addProject")
-	public ModelAndView addProjectPost(HttpServletRequest request) {
-		printRequest(request);
-		ModelAndView model = new ModelAndView();
-		model.setViewName("views/project/addProject");
-		return model;
-	}
+//	@GetMapping("/addProject")
+//	public ModelAndView addProjectPost(HttpServletRequest request) {
+//		printRequest(request);
+//		ModelAndView model = new ModelAndView();
+//		model.setViewName("views/project/addProject");
+//		return model;
+//	}
+//	
+//	@PostMapping(value = "/addProject" ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+//	public ModelAndView addProjectPost(HttpServletRequest request , String projectId, String projectName, String projectDescription) {
+//		printRequest(request);
+//		ModelAndView model = new ModelAndView();
+//		Project project = new Project();
+//		project.setProjectId(projectId);
+//		project.setProjectName(projectName);
+//		project.setDescription(projectDescription);
+//		holidayManagementService.addProject(project);
+//		model.setViewName("redirect:/projects");
+//		return model;
+//	}
+//	
+//	@GetMapping("/editProject")
+//	public ModelAndView editProject(HttpServletRequest request , @RequestParam(required = true) String projectId) {
+//		printRequest(request);
+//		ModelAndView model = new ModelAndView();
+//		model.addObject("updatedProject",holidayManagementService.getProjectById(projectId));
+//		model.setViewName("views/project/editProject");
+//		return model;
+//	}
+//	
+//	@GetMapping("/deleteProject")
+//	public ModelAndView deleteProject(HttpServletRequest request , @RequestParam(required = true) String projectId) {
+//		printRequest(request);
+//		ModelAndView model = new ModelAndView();
+//		holidayManagementService.deleteProject(projectId);;
+//		model.setViewName("redirect:/projects");
+//		return model;
+//	}
+//	
+//	@PostMapping(value = "/editProject" ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+//	public ModelAndView editProjectPost(HttpServletRequest request ,String oldProjectId, String projectId, String projectName, String projectDescription) {
+//		printRequest(request);
+//		ModelAndView model = new ModelAndView();
+//		Project project = holidayManagementService.getProjectById(oldProjectId);
+//		project.setProjectId(projectId);
+//		project.setProjectName(projectName);
+//		project.setDescription(projectDescription);
+//		holidayManagementService.updateProject(project);
+//		model.setViewName("redirect:/projects");
+//		return model;
+//	}
 	
-	@PostMapping(value = "/addProject" ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ModelAndView addProjectPost(HttpServletRequest request , String projectId, String projectName, String projectDescription) {
-		printRequest(request);
-		ModelAndView model = new ModelAndView();
-		Project project = new Project();
-		project.setProjectId(projectId);
-		project.setProjectName(projectName);
-		project.setDescription(projectDescription);
-		holidayManagementService.addProject(project);
-		model.setViewName("redirect:/projects");
-		return model;
-	}
-	
-	@GetMapping("/editProject")
-	public ModelAndView editProject(HttpServletRequest request , @RequestParam(required = true) String projectId) {
-		printRequest(request);
-		ModelAndView model = new ModelAndView();
-		model.addObject("updatedProject",holidayManagementService.getProjectById(projectId));
-		model.setViewName("views/project/editProject");
-		return model;
-	}
-	
-	@GetMapping("/deleteProject")
-	public ModelAndView deleteProject(HttpServletRequest request , @RequestParam(required = true) String projectId) {
-		printRequest(request);
-		ModelAndView model = new ModelAndView();
-		holidayManagementService.deleteProject(projectId);;
-		model.setViewName("redirect:/projects");
-		return model;
-	}
-	
-	@PostMapping(value = "/editProject" ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ModelAndView editProjectPost(HttpServletRequest request ,String oldProjectId, String projectId, String projectName, String projectDescription) {
-		printRequest(request);
-		ModelAndView model = new ModelAndView();
-		Project project = holidayManagementService.getProjectById(oldProjectId);
-		project.setProjectId(projectId);
-		project.setProjectName(projectName);
-		project.setDescription(projectDescription);
-		holidayManagementService.updateProject(project);
-		model.setViewName("redirect:/projects");
-		return model;
-	}
-	
-	@GetMapping("/employees")
-	public ModelAndView employees(HttpServletRequest request) {
-		printRequest(request);
-		ModelAndView model = new ModelAndView();
-		model.addObject("employers", holidayManagementService.getAllEmployees());
-		model.setViewName("views/employee/employees");
-		return model;
-	}
-	
-	@GetMapping("/addEmployee")
-	public ModelAndView addEmployee(HttpServletRequest request) {
-		printRequest(request);
-		ModelAndView model = new ModelAndView();
-		model.addObject("projects", holidayManagementService.getAllProjects());
-		model.addObject("supervisors", holidayManagementService.getEmployeesByGrade(EmployeeGrade.SUPERVISOR));
-		model.addObject("grads", Arrays.asList(EmployeeGrade.values()));
-		model.setViewName("views/employee/addEmployee");
-		return model;
-	}
-	
-	@PostMapping(value = "/addEmployee" ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ModelAndView addEmployeePost(HttpServletRequest request, String fNmae, String lName, String username, String email, String grade, String project, String supervisor, String initialDays) {
-		printRequest(request);
-		
-		ModelAndView model = new ModelAndView();
-		model.setViewName("redirect:/employees");
-		return model;
-	}
-	
-	@GetMapping("/editEmployee")
-	public ModelAndView editEmployee(HttpServletRequest request , @RequestParam(required = true) Integer employeeId) {
-		printRequest(request);
-		ModelAndView model = new ModelAndView();
-		model.addObject("updatedEmployee",holidayManagementService.getEmployeeById(employeeId));
-		model.setViewName("views/employee/editEmployee");
-		return model;
-	}
-	
-	@GetMapping("/holidays")
-	public ModelAndView holidays(HttpServletRequest request) {
-		printRequest(request);
-		ModelAndView model = new ModelAndView();
-		model.addObject("holidays", holidayManagementService.getAllHolidays());
-		model.setViewName("views/holiday/holidays");
-		return model;
-	}
-	
-	@GetMapping("/requestHoliday")
-	public ModelAndView requestHoliday(HttpServletRequest request) {
-		printRequest(request);
-		ModelAndView model = new ModelAndView();
-		model.setViewName("views/holiday/requestHoliday");
-		return model;
-	}
-	
-	@PostMapping(value="/requestHoliday",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ModelAndView requestHoliday(HttpServletRequest request, String startDate, String endDate, String duration) throws ParseException {
-		printRequest(request);
-		
-		Employee employee = ((UserApp)request.getSession().getAttribute("userApp")).getEmployee();
-		Date startDateC = sdf.parse(startDate);
-		Date endDateC = sdf.parse(endDate);
-		float durationC = Float.parseFloat(duration);
-		
-		Holiday holiday = new Holiday();
-		holiday.setRefHoliday("HOLIDAY"+new Date().getTime());
-		holiday.setDateRequest(new Date());
-		holiday.setStartDate(startDateC);
-		holiday.setEndDate(endDateC);
-		holiday.setDuration(durationC);
-		holiday.setEmployee(employee);
-		holiday.setStatus(HolidayStatus.PENDING.getValue());
-		
-		holidayManagementService.addHoliday(holiday);
-		ModelAndView model = new ModelAndView();
-		model.setViewName("redirect:/holidays");
-		return model;
-	}
-
-	@GetMapping("/holidayActions")
-	public ModelAndView holidayActions(HttpServletRequest request, String approve,  String reject) {
-		printRequest(request);
-		if(approve != null) {
-			Holiday holiday = holidayManagementService.getHolidayByRef(approve);
-			holiday.setStatus(HolidayStatus.APPROVED.getValue());
-			holidayManagementService.updateHoliday(holiday);
-		}else if(reject != null){
-			Holiday holiday = holidayManagementService.getHolidayByRef(reject);
-			holiday.setStatus(HolidayStatus.REJECTED.getValue());
-			holidayManagementService.updateHoliday(holiday);
-		}
-		
-		ModelAndView model = new ModelAndView();
-		model.setViewName("redirect:/holidays");
-		return model; 
-	}
-	
-	
+//	@GetMapping("/employees")
+//	public ModelAndView employees(HttpServletRequest request) {
+//		printRequest(request);
+//		ModelAndView model = new ModelAndView();
+//		model.addObject("employers", holidayManagementService.getAllEmployees());
+//		model.setViewName("views/employee/employees");
+//		return model;
+//	}
+//	
+//	@GetMapping("/addEmployee")
+//	public ModelAndView addEmployee(HttpServletRequest request) {
+//		printRequest(request);
+//		ModelAndView model = new ModelAndView();
+//		model.addObject("projects", holidayManagementService.getAllProjects());
+//		model.addObject("supervisors", holidayManagementService.getEmployeesByGrade(EmployeeGrade.SUPERVISOR));
+//		model.addObject("grads", Arrays.asList(EmployeeGrade.values()));
+//		model.setViewName("views/employee/addEmployee");
+//		return model;
+//	}
+//	
+//	@PostMapping(value = "/addEmployee" ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+//	public ModelAndView addEmployeePost(HttpServletRequest request, String fNmae, String lName, String username, String email, String grade, String project, String supervisor, String initialDays) {
+//		printRequest(request);
+//		
+//		ModelAndView model = new ModelAndView();
+//		model.setViewName("redirect:/employees");
+//		return model;
+//	}
+//	
+//	@GetMapping("/editEmployee")
+//	public ModelAndView editEmployee(HttpServletRequest request , @RequestParam(required = true) Integer employeeId) {
+//		printRequest(request);
+//		ModelAndView model = new ModelAndView();
+//		model.addObject("updatedEmployee",holidayManagementService.getEmployeeById(employeeId));
+//		model.setViewName("views/employee/editEmployee");
+//		return model;
+//	}
+//	
+//	@GetMapping("/holidays")
+//	public ModelAndView holidays(HttpServletRequest request) {
+//		printRequest(request);
+//		ModelAndView model = new ModelAndView();
+//		model.addObject("holidays", holidayManagementService.getAllHolidays());
+//		model.setViewName("views/holiday/holidays");
+//		return model;
+//	}
+//	
+//	@GetMapping("/requestHoliday")
+//	public ModelAndView requestHoliday(HttpServletRequest request) {
+//		printRequest(request);
+//		ModelAndView model = new ModelAndView();
+//		model.setViewName("views/holiday/requestHoliday");
+//		return model;
+//	}
+//	
+//	@PostMapping(value="/requestHoliday",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+//	public ModelAndView requestHoliday(HttpServletRequest request, String startDate, String endDate, String duration) throws ParseException {
+//		printRequest(request);
+//		
+//		Employee employee = ((UserApp)request.getSession().getAttribute("userApp")).getEmployee();
+//		Date startDateC = sdf.parse(startDate);
+//		Date endDateC = sdf.parse(endDate);
+//		float durationC = Float.parseFloat(duration);
+//		
+//		Holiday holiday = new Holiday();
+//		holiday.setRefHoliday("HOLIDAY"+new Date().getTime());
+//		holiday.setDateRequest(new Date());
+//		holiday.setStartDate(startDateC);
+//		holiday.setEndDate(endDateC);
+//		holiday.setDuration(durationC);
+//		holiday.setEmployee(employee);
+//		holiday.setStatus(HolidayStatus.PENDING.getValue());
+//		
+//		holidayManagementService.addHoliday(holiday);
+//		ModelAndView model = new ModelAndView();
+//		model.setViewName("redirect:/holidays");
+//		return model;
+//	}
+//
+//	@GetMapping("/holidayActions")
+//	public ModelAndView holidayActions(HttpServletRequest request, String approve,  String reject) {
+//		printRequest(request);
+//		if(approve != null) {
+//			Holiday holiday = holidayManagementService.getHolidayByRef(approve);
+//			holiday.setStatus(HolidayStatus.APPROVED.getValue());
+//			holidayManagementService.updateHoliday(holiday);
+//		}else if(reject != null){
+//			Holiday holiday = holidayManagementService.getHolidayByRef(reject);
+//			holiday.setStatus(HolidayStatus.REJECTED.getValue());
+//			holidayManagementService.updateHoliday(holiday);
+//		}
+//		
+//		ModelAndView model = new ModelAndView();
+//		model.setViewName("redirect:/holidays");
+//		return model; 
+//	}
+//	
+//	
 	
 	@GetMapping("/employers/holidays")
 	public ModelAndView holidaysByEmployee(HttpServletRequest request, @RequestParam(required = true) String idEmployee) {
