@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.everis.domain.Employee;
 import com.everis.domain.EmployeeGrade;
+import com.everis.domain.Project;
 import com.everis.service.impl.HolidayManagementServiceImpl;
 
 @Controller
@@ -63,7 +64,7 @@ public class EmployeesController {
 		
 		Integer idemployee = (int) (new Date().getTime()/1000);
 		empl.setEmployeeId(idemployee);
-		empl.setUsername(firstname.substring(0, 1)+lastname);
+		empl.setUsername(username);
 		empl.setPassword( Tools.generatePassword(firstname+lastname));
 		empl.setFirstName(firstname);
 		empl.setLastName(lastname);
@@ -86,7 +87,33 @@ public class EmployeesController {
 		printRequest(request);
 		ModelAndView model = new ModelAndView();
 		model.addObject("updatedEmployee",holidayManagementService.getEmployeeById(employeeId));
+		model.addObject("supervisors", holidayManagementService.getEmployeesByGrade(EmployeeGrade.SUPERVISOR));
+		model.addObject("projects", holidayManagementService.getAllProjects());
 		model.setViewName("views/employee/editEmployee");
+		return model;
+	}
+	
+	
+	@PostMapping(value = "/editEmployee" ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ModelAndView editEmployee(HttpServletRequest request,Integer employeeId ,String firstname, String lastname, String username,String password, String addressmail,Integer supervisor, String grade, String project,float initialdays, float availabledays) {
+		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		
+		Employee empl = holidayManagementService.getEmployeeById(employeeId);
+		empl.setPassword(password);
+		empl.setFirstName(firstname);
+		empl.setUsername(username); 
+		empl.setLastName(lastname);
+		empl.setMailAdress(addressmail);
+		empl.setGrade(grade);
+		empl.setProject(holidayManagementService.getProjectById(project));
+		empl.setSupervisor(holidayManagementService.getEmployeeById(supervisor));
+		empl.setInitialBalance(initialdays);
+		empl.setCurrentBalance(availabledays);
+		holidayManagementService.updateEmployee(empl);
+		
+		
+		model.setViewName("redirect:/employees");
 		return model;
 	}
 	

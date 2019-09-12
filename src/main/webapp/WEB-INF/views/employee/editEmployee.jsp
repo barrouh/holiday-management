@@ -13,6 +13,11 @@
             <hr>
                 </div>
                 <form method="POST" action="" class="">
+                
+                <div class="uk-margin">
+                        <input class="uk-input" name="employeeId" type="hidden" value="${updatedEmployee.employeeId}">
+                    </div>
+                
                     <div class="uk-margin">
                         <input class="uk-input" name="firstname" type="text" placeholder="<spring:message code="employee.first.name" />" value="${updatedEmployee.firstName}">
                     </div>
@@ -24,21 +29,34 @@
                         <input class="uk-input" name="username" type="text" placeholder="<spring:message code="employee.user.name" />" value="${updatedEmployee.username}">
                     </div>
                     <div class="uk-margin">
+
+                        <input class="uk-input" name="password" type="text" placeholder="<spring:message code="employee.user.name" />" value="${updatedEmployee.password}">
+                    </div>
+                    <div class="uk-margin">
                         <input class="uk-input" name="addressmail" type="text" placeholder="<spring:message code="employee.address.mail" />" value="${updatedEmployee.mailAdress}">
                     </div>
                     <div class="uk-margin">
                         <input class="uk-input" name="grade" type="text" placeholder="<spring:message code="employee.grade" />" value="${updatedEmployee.grade}">
                     </div>
-                    <div class="uk-margin">
-
-                        <input class="uk-input" name="project" type="text" placeholder="<spring:message code="employee.project" />" value="${updatedEmployee.project.projectName}">
-                    </div>
-                    <div class="uk-margin">
-
-                        <input class="uk-input" name="supervisor" type="text" placeholder="<spring:message code="employee.supervisor" />" value="${updatedEmployee.supervisor}">
-                    </div>
-                    <div class="uk-margin">
-
+                   <div class="uk-margin">
+						<select class="uk-input" name="project">
+							<c:if test="${not empty projects}">
+								<c:forEach items="${projects}" var="project">
+									<option value="${project.projectId}">${project.projectName}</option>
+								</c:forEach>
+							</c:if>
+						</select>
+					</div>
+					<div class="uk-margin">
+						<select class="uk-input" name="supervisor">
+							<c:if test="${not empty supervisors}">
+								<c:forEach items="${supervisors}" var="supervisor">
+									<option  value="${supervisor.employeeId}">${supervisor.username}</option>
+								</c:forEach>
+							</c:if>
+						</select>
+					</div>
+				<div>
                         <input class="uk-input" name="initialdays" type="text" placeholder="<spring:message code="employee.initial.days" />" value="${updatedEmployee.initialBalance}">
                     </div>
                     <div class="uk-margin">
