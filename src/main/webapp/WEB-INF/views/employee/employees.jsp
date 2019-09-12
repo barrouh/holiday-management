@@ -59,7 +59,7 @@
                                             <td class="uk-text-nowrap">${employer.mailAdress}</td>
                                             <td class="uk-text-nowrap">${employer.grade}</td>
                                             <td class="uk-text-truncate">${employer.project.projectName}</td>
-                                            <td class="uk-text-truncate">${employer.supervisor}</td>
+                                            <td class="uk-text-truncate">${employer.supervisor.username}</td>
                                             <td class="uk-text-truncate">${employer.initialBalance}</td>
                                             <td class="uk-text-truncate">${employer.currentBalance}</td>
                                             <td class="uk-text-nowrap">

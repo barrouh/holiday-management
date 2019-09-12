@@ -1,11 +1,13 @@
 package com.everis.web;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.everis.domain.Employee;
 import com.everis.domain.EmployeeGrade;
 import com.everis.service.impl.HolidayManagementServiceImpl;
 
@@ -22,6 +25,7 @@ public class EmployeesController {
 	
 	@Autowired
 	private HolidayManagementServiceImpl holidayManagementService;
+	
 	
 	private static final Logger LOGGER = LogManager.getLogger(MainController.class);
 	
@@ -51,9 +55,26 @@ public class EmployeesController {
 		return model;
 	}
 	
+	
 	@PostMapping(value = "/addEmployee" ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ModelAndView addEmployeePost(HttpServletRequest request, String fNmae, String lName, String username, String email, String grade, String project, String supervisor, String initialDays) {
+	public ModelAndView addEmployeePost(HttpServletRequest request, String firstname, String lastname, String username, String addressmail, String grade, String project,Integer supervisor ,float initialdays ) {
 		printRequest(request);
+		Employee empl = new Employee();
+		
+		Integer idemployee = (int) (new Date().getTime()/1000);
+		empl.setEmployeeId(idemployee);
+		empl.setUsername(firstname.substring(0, 1)+lastname);
+		empl.setPassword( Tools.generatePassword(firstname+lastname));
+		empl.setFirstName(firstname);
+		empl.setLastName(lastname);
+		empl.setMailAdress(addressmail);
+		empl.setGrade(grade);
+		empl.setProject(holidayManagementService.getProjectById(project));
+		empl.setSupervisor(holidayManagementService.getEmployeeById(supervisor));
+	
+		empl.setInitialBalance(initialdays);
+		empl.setCurrentBalance(initialdays);
+		holidayManagementService.addEmployee(empl);
 		
 		ModelAndView model = new ModelAndView();
 		model.setViewName("redirect:/employees");
