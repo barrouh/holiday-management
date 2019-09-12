@@ -111,5 +111,20 @@ public class EmployeesController {
 		model.setViewName("redirect:/employees");
 		return model;
 	}
-
+	
+	@PostMapping(value = "/saveSettings", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ModelAndView saveSettings(HttpServletRequest request, Boolean notifications) {
+		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		Employee employee = Tools.getCurrentEmployee(request);
+		if(notifications==null) {
+			employee.setNotifications(false);
+		}else {
+			employee.setNotifications(notifications);
+		}
+		holidayManagementService.updateEmployee(employee);
+		model.setViewName("redirect:/");
+		return model;
+	}
+	
 }

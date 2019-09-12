@@ -8,6 +8,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.everis.domain.Employee;
+import com.everis.domain.UserApp;
+
 public class Tools {
 	
 	private static final String[] IP_HEADER_CANDIDATES = { "X-Forwarded-For", "Proxy-Client-IP", "WL-Proxy-Client-IP",
@@ -47,5 +50,10 @@ public class Tools {
 		  }
 	    return password.toString();
 	}
+	
+	public static Employee getCurrentEmployee(HttpServletRequest request) {
+		return ((UserApp) request.getSession().getAttribute("userApp")).getEmployee();
+	}
+
 	
 }

@@ -80,23 +80,5 @@ public class MainController {
 		session.setAttribute("userApp", userApp);
 		return new ModelAndView("redirect:/");
 	}
-
-	@GetMapping("/employers/holidays")
-	public ModelAndView holidaysByEmployee(HttpServletRequest request,
-			@RequestParam(required = true) String idEmployee) {
-		printRequest(request);
-
-		ModelAndView model = new ModelAndView();
-		model.setViewName(MAIN_VIEW_NAME);
-		return model;
-	}
-
-	@GetMapping("/project/holidays")
-	public ModelAndView holidaysByProject(HttpServletRequest request, @RequestParam(required = true) String idProject) {
-		printRequest(request);
-		ModelAndView model = new ModelAndView();
-		model.setViewName(MAIN_VIEW_NAME);
-		return model;
-	}
-
+	
 }

@@ -12,17 +12,22 @@
         http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+        
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		 <property name="locations">
+		    <list>
+		       <value>classpath:app-config.properties</value>
+		    </list>
+		 </property>
+	</bean>
 
 	<context:component-scan base-package="com.everis.*" />
 
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName"
-			value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="url"
-			value="jdbc:mysql://remotemysql.com:3306/8fKpUFkoju"></property>
-		<property name="username" value="8fKpUFkoju"></property>
-		<property name="password" value="0Ehct4ULD9"></property>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${DRIVER_CLASS_NAME}"/>
+		<property name="url" value="${URL}"/>
+		<property name="username" value="${USERNAME}"/>
+		<property name="password" value="${PASSWORD}"/>
 	</bean>
 
 	<bean id="sessionFactory"
@@ -31,9 +36,9 @@
 		<property name="packagesToScan" value="com.everis.domain" />
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hbm2ddl.auto">create</prop>
+				<prop key="hibernate.dialect">${HIBERNATE_DIALECT}</prop>
+				<prop key="hibernate.show_sql">${HIBERNATE_SHOW_SQL}</prop>
+				<prop key="hbm2ddl.auto">${HBM2DDL_AUTO}</prop>
 			</props>
 		</property>
 	</bean>
@@ -43,19 +48,18 @@
 	</bean>
 	
 	<bean id="settings" class="com.everis.domain.Settings">
-     	<property name="mailHost" value="smtp.gmail.com" />
-     	<property name="mailPort" value="465" />
-     	<property name="mailTo" value="mohamed.barrouh@gmail.com" />
-     	<property name="mailFromUser" value="smtp.barrouh" />
-     	<property name="mailFromUserPassword" value="test" />
-     	<property name="emailTemplatePath" value="email/" />
+     	<property name="mailHost" value="${MAIL_HOST}" />
+     	<property name="mailPort" value="${MAIL_PORT}" />
+     	<property name="mailTo" value="${MAIL_TO}" />
+     	<property name="mailFromUser" value="${MAIL_FROM_USER}" />
+     	<property name="mailFromUserPassword" value="${MAIL_FROMUSER_PASSWORD}" />
+     	<property name="emailTemplatePath" value="${EMAIL_TEMPLATE_PATH}" />
 	</bean>
 	
-	<bean id="mailService" class="com.everis.service.MailServiceImpl">
-	 <constructor-arg><ref bean="settings"/></constructor-arg>
+	<bean id="mailService" class="com.everis.service.impl.MailServiceImpl">
+	   <constructor-arg ref="settings"/>
 	</bean>
 
-	<tx:annotation-driven
-		transaction-manager="transactionManager" proxy-target-class="true" />
-
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+	
 </beans>  

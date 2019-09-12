@@ -57,7 +57,7 @@ public class HolidaysController {
 			throws ParseException {
 		printRequest(request);
 
-		Employee employee = ((UserApp) request.getSession().getAttribute("userApp")).getEmployee();
+		Employee employee = Tools.getCurrentEmployee(request);
 		Date startDateC = sdf.parse(startDate);
 		Date endDateC = sdf.parse(endDate);
 		float durationC = Float.parseFloat(duration);

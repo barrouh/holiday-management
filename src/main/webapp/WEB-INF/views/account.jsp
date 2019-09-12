@@ -78,7 +78,12 @@
 
                 <div class="uk-margin">
                     Email Notification
-                    <input type="checkbox" name="emailNotification" />
+                     <c:if test = "${employee.notifications}">
+                         <input type="checkbox" name="notifications" checked/>
+                     </c:if>
+			         <c:if test = "${!employee.notifications}">
+			             <input type="checkbox" name="notifications" />
+			         </c:if>
                 </div>
 
                 <div class="uk-margin">
