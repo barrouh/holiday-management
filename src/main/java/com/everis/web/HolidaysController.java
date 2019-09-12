@@ -23,20 +23,18 @@ import com.everis.service.impl.HolidayManagementServiceImpl;
 
 @Controller
 public class HolidaysController {
-	
+
 	@Autowired
 	private HolidayManagementServiceImpl holidayManagementService;
-	
+
 	private static final Logger LOGGER = LogManager.getLogger(MainController.class);
-	
-	
-	
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
-	
+
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
 	public void printRequest(HttpServletRequest request) {
 		LOGGER.info("Receiving request from client with IP address: " + Tools.getClientIpAddr(request));
 	}
-	
+
 	@GetMapping("/holidays")
 	public ModelAndView holidays(HttpServletRequest request) {
 		printRequest(request);
@@ -45,7 +43,7 @@ public class HolidaysController {
 		model.setViewName("views/holiday/holidays");
 		return model;
 	}
-	
+
 	@GetMapping("/requestHoliday")
 	public ModelAndView requestHoliday(HttpServletRequest request) {
 		printRequest(request);
@@ -53,25 +51,26 @@ public class HolidaysController {
 		model.setViewName("views/holiday/requestHoliday");
 		return model;
 	}
-	
-	@PostMapping(value="/requestHoliday",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ModelAndView requestHoliday(HttpServletRequest request, String startDate, String endDate, String duration) throws ParseException {
+
+	@PostMapping(value = "/requestHoliday", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ModelAndView requestHoliday(HttpServletRequest request, String startDate, String endDate, String duration)
+			throws ParseException {
 		printRequest(request);
-		
-		Employee employee = ((UserApp)request.getSession().getAttribute("userApp")).getEmployee();
+
+		Employee employee = ((UserApp) request.getSession().getAttribute("userApp")).getEmployee();
 		Date startDateC = sdf.parse(startDate);
 		Date endDateC = sdf.parse(endDate);
 		float durationC = Float.parseFloat(duration);
-		
+
 		Holiday holiday = new Holiday();
-		holiday.setRefHoliday("HOLIDAY"+new Date().getTime());
+		holiday.setRefHoliday("HOLIDAY" + new Date().getTime());
 		holiday.setDateRequest(new Date());
 		holiday.setStartDate(startDateC);
 		holiday.setEndDate(endDateC);
 		holiday.setDuration(durationC);
 		holiday.setEmployee(employee);
 		holiday.setStatus(HolidayStatus.PENDING.getValue());
-		
+
 		holidayManagementService.addHoliday(holiday);
 		ModelAndView model = new ModelAndView();
 		model.setViewName("redirect:/holidays");
@@ -79,23 +78,21 @@ public class HolidaysController {
 	}
 
 	@GetMapping("/holidayActions")
-	public ModelAndView holidayActions(HttpServletRequest request, String approve,  String reject) {
+	public ModelAndView holidayActions(HttpServletRequest request, String approve, String reject) {
 		printRequest(request);
-		if(approve != null) {
+		if (approve != null) {
 			Holiday holiday = holidayManagementService.getHolidayByRef(approve);
 			holiday.setStatus(HolidayStatus.APPROVED.getValue());
 			holidayManagementService.updateHoliday(holiday);
-		}else if(reject != null){
+		} else if (reject != null) {
 			Holiday holiday = holidayManagementService.getHolidayByRef(reject);
 			holiday.setStatus(HolidayStatus.REJECTED.getValue());
 			holidayManagementService.updateHoliday(holiday);
 		}
-		
+
 		ModelAndView model = new ModelAndView();
 		model.setViewName("redirect:/holidays");
-		return model; 
+		return model;
 	}
-	
-	
 
 }

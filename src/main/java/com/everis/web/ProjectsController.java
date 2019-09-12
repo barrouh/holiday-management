@@ -13,17 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.everis.domain.Project;
 import com.everis.service.impl.HolidayManagementServiceImpl;
 
-
 @Controller
 public class ProjectsController {
 
-	
 	@Autowired
 	private HolidayManagementServiceImpl holidayManagementService;
 	
 	private static final Logger LOGGER = LogManager.getLogger(MainController.class);
-	
-	
 	
 	public void printRequest(HttpServletRequest request) {
 		LOGGER.info("Receiving request from client with IP address: " + Tools.getClientIpAddr(request));

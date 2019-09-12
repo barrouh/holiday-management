@@ -1,15 +1,12 @@
 package com.everis.web;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
-import liquibase.changelog.filter.ShouldRunChangeSetFilter;
 
 public class Tools {
 	
@@ -35,24 +32,20 @@ public class Tools {
 		}
 	}
 	
-	
 	public static String dateFormater(Date date) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
 		return sdf.format(date);
 	}
 	
 	public static String generatePassword(String text) {
-	    
 		text += "123456789";
 		List<String> letters = Arrays.asList(text.split(""));
 		  Collections.shuffle(letters);
-		  String password = "";
+		  StringBuilder password = new StringBuilder();
 		  for (String letter : letters) {
-			  password += letter;
+			  password.append(letter);
 		  }
-	    return password;
+	    return password.toString();
 	}
 	
-	
-
 }

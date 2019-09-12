@@ -49,7 +49,7 @@ public class HolidayManagementServiceTest {
 		epo.setDescription("This is TEST project");
 		holidayManagementService.updateProject(epo);
 		epo = holidayManagementService.getProjectById("TEST");
-		assertEquals("This is TEST project",epo.getDescription());
+		assertEquals("This is TEST project", epo.getDescription());
 	}
 
 	@Test
@@ -77,7 +77,7 @@ public class HolidayManagementServiceTest {
 		empl.setPassword("testpass");
 		empl.setFirstName("mohamed");
 		empl.setLastName("barrouh");
-		empl.setMailAdress("m@barrouh.com");;
+		empl.setMailAdress("m@barrouh.com");
 		empl.setProject(holidayManagementService.getProjectById("TEST"));
 		empl.setGrade("developer");
 		empl.setInitialBalance(18);
@@ -117,9 +117,9 @@ public class HolidayManagementServiceTest {
 		hld.setStartDate(new Date());
 		hld.setEndDate(new Date());
 		hld.setDuration(1);
-		hld.setEmployee( holidayManagementService.getEmployeeById(1214));
+		hld.setEmployee(holidayManagementService.getEmployeeById(1214));
 		hld.setComment("summer holidays");
-	    hld.setStatus("NEW");
+		hld.setStatus("NEW");
 		holidayManagementService.addHoliday(hld);
 	}
 

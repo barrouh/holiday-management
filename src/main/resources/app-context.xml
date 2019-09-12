@@ -41,6 +41,19 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean id="settings" class="com.everis.domain.Settings">
+     	<property name="mailHost" value="smtp.gmail.com" />
+     	<property name="mailPort" value="465" />
+     	<property name="mailTo" value="mohamed.barrouh@gmail.com" />
+     	<property name="mailFromUser" value="smtp.barrouh" />
+     	<property name="mailFromUserPassword" value="test" />
+     	<property name="emailTemplatePath" value="email/" />
+	</bean>
+	
+	<bean id="mailService" class="com.everis.service.MailServiceImpl">
+	 <constructor-arg><ref bean="settings"/></constructor-arg>
+	</bean>
 
 	<tx:annotation-driven
 		transaction-manager="transactionManager" proxy-target-class="true" />
