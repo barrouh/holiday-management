@@ -44,9 +44,11 @@
                                     <th>
                                         <spring:message code="employee.available.days" />
                                     </th>
+                                    <c:if test = "${sessionScope.userApp.hasSupervisorAccess}">
                                     <th>
                                         <spring:message code="actions" />
                                     </th>
+                                    </c:if>
                                 </tr>
                             </thead>
                             <c:if test="${not empty employers}">
@@ -62,10 +64,12 @@
                                             <td class="uk-text-truncate">${employer.supervisor.username}</td>
                                             <td class="uk-text-truncate">${employer.initialBalance}</td>
                                             <td class="uk-text-truncate">${employer.currentBalance}</td>
+                                            <c:if test = "${sessionScope.userApp.hasSupervisorAccess}">
                                             <td class="uk-text-nowrap">
                                                 <a href="editEmployee?employeeId=${employer.employeeId}" class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" uk-tooltip="Edit">Edit</a>
                                                 <a href="editEmployee?employeeId=${employer.employeeId}" class="uk-icon-link" uk-icon="trash" uk-tooltip="Delete">Delete</a>
                                             </td>
+                                            </c:if>
                                         </tr>
                                     </tbody>
                                 </c:forEach>

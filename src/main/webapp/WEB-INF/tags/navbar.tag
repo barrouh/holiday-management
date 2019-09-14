@@ -34,6 +34,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/pendingHolidays">
+                        <spring:message code="navbar.menu.holidays.list.pending" />
+                    </a>
+                </li>
+                <li>
                     <a href="/requestHoliday">
                         <spring:message code="navbar.menu.holidays.add.new" />
                     </a>

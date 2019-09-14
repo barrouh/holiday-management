@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
@@ -19,6 +20,7 @@ import com.everis.dao.ProjectDao;
 import com.everis.domain.Employee;
 import com.everis.domain.EmployeeGrade;
 import com.everis.domain.Holiday;
+import com.everis.domain.HolidayStatus;
 import com.everis.domain.Project;
 
 /**
@@ -119,8 +121,10 @@ public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDa
 		CriteriaBuilder builder = getSession().getCriteriaBuilder();
 		CriteriaQuery<Employee> query = builder.createQuery(Employee.class);
 		Root<Employee> root = query.from(Employee.class);
-		query.select(root).where(builder.equal(root.get("username"), username));
-		query.select(root).where(builder.equal(root.get("password"), password));
+		Predicate predicateForUsername = builder.equal(root.get("username"), username);
+		Predicate predicateForPassword = builder.equal(root.get("password"), password);
+		Predicate finalPredicate  = builder.and(predicateForUsername, predicateForPassword);
+		query.where(finalPredicate);
 		Query<Employee> q = getSession().createQuery(query);
 		if (!q.list().isEmpty()) {
 			return q.getSingleResult();
@@ -136,6 +140,20 @@ public class HolidayManagementDaoImpl implements HolidayManagementDao, ProjectDa
 		Root<Employee> root = query.from(Employee.class);
 		query.select(root).where(builder.equal(root.get("grade"), grade.name()));
 		Query<Employee> q = getSession().createQuery(query);
+		if (!q.list().isEmpty()) {
+			return q.getResultList();
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public List<Holiday> getHolidaysByStatus(HolidayStatus holidayStatus) {
+		CriteriaBuilder builder = getSession().getCriteriaBuilder();
+		CriteriaQuery<Holiday> query = builder.createQuery(Holiday.class);
+		Root<Holiday> root = query.from(Holiday.class);
+		query.select(root).where(builder.equal(root.get("status"), holidayStatus.getValue()));
+		Query<Holiday> q = getSession().createQuery(query);
 		if (!q.list().isEmpty()) {
 			return q.getResultList();
 		} else {

@@ -11,6 +11,8 @@ public class UserApp implements java.io.Serializable{
 	
 	private boolean logged = false;
 	
+	private boolean hasSupervisorAccess = false;
+	
 	private boolean loggingFailed = false;
 	
 	public UserApp() {
@@ -24,6 +26,9 @@ public class UserApp implements java.io.Serializable{
 		this.logged = logged;
 		this.employee = employee;
 		this.loggingFailed = false;
+		if(employee.getGrade().equals(EmployeeGrade.SUPERVISOR.name())) {
+			hasSupervisorAccess = true;
+		}
 	}
 
 	public boolean isLogged() {
@@ -32,6 +37,14 @@ public class UserApp implements java.io.Serializable{
 
 	public void setLogged(boolean logged) {
 		this.logged = logged;
+	}
+
+	public boolean isHasSupervisorAccess() {
+		return hasSupervisorAccess;
+	}
+
+	public void setHasSupervisorAccess(boolean hasSupervisorAccess) {
+		this.hasSupervisorAccess = hasSupervisorAccess;
 	}
 
 	public boolean isLoggingFailed() {

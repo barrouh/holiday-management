@@ -27,9 +27,11 @@
                                     <th>
                                         <spring:message code="project.description" />
                                     </th>
+                                    <c:if test = "${sessionScope.userApp.hasSupervisorAccess}">
                                     <th>
                                         <spring:message code="actions" />
                                     </th>
+                                    </c:if>
                                 </tr>
                             </thead>
                             <c:if test="${not empty projects}">
@@ -39,10 +41,12 @@
                                             <td class="uk-text-truncate">${project.projectId}</td>
                                             <td class="uk-text-truncate">${project.projectName}</td>
                                             <td class="uk-text-truncate">${project.description}</td>
+                                            <c:if test = "${sessionScope.userApp.hasSupervisorAccess}">
                                             <td class="uk-text-truncate">
                                             	<a href="editProject?projectId=${project.projectId}" class="uk-icon-link uk-margin-small-right" uk-icon="file-edit" uk-tooltip="Edit">Edit</a> 
                                             	<a href="deleteProject?projectId=${project.projectId}" class="uk-icon-link" uk-icon="trash" uk-tooltip="Delete">Delete</a>
                                             </td>
+                                            </c:if>
                                         </tr>
                                     </tbody>
                                 </c:forEach>

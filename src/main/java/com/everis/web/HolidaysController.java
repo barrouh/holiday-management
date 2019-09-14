@@ -43,6 +43,15 @@ public class HolidaysController {
 		model.setViewName("views/holiday/holidays");
 		return model;
 	}
+	
+	@GetMapping("/pendingHolidays")
+	public ModelAndView pendingHolidays(HttpServletRequest request) {
+		printRequest(request);
+		ModelAndView model = new ModelAndView();
+		model.addObject("holidays", holidayManagementService.getHolidaysByStatus(HolidayStatus.PENDING));
+		model.setViewName("views/holiday/pendingHolidays");
+		return model;
+	}
 
 	@GetMapping("/requestHoliday")
 	public ModelAndView requestHoliday(HttpServletRequest request) {

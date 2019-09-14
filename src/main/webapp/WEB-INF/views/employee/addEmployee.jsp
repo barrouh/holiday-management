@@ -4,7 +4,7 @@
 
 <tags:header />
 <body>
-	<c:if test="${sessionScope.userApp.logged}">
+	<c:if test="${sessionScope.userApp.logged && sessionScope.userApp.hasSupervisorAccess}">
 		<%-- add new employee--%>
 		<section class="uk-section uk-section-muted uk-animation-fade">
 			<div
@@ -77,6 +77,9 @@
 				</form>
 			</div>
 		</section>
+	</c:if>
+	<c:if test="${!sessionScope.userApp.hasSupervisorAccess}">
+		<%@ include file="/WEB-INF/views/accessError.jsp"%>
 	</c:if>
 	<c:if test="${!sessionScope.userApp.logged}">
 		<c:redirect url="/" />

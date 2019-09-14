@@ -52,7 +52,7 @@
             <div class="uk-margin">
                 <p>
                     Supervisor :
-                    <c:out value="${employee.supervisor}" />
+                    <c:out value="${employee.supervisor.username}" />
                 </p>
             </div>
 

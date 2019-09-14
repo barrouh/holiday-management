@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.everis.domain.Employee;
 import com.everis.domain.EmployeeGrade;
 import com.everis.domain.Holiday;
+import com.everis.domain.HolidayStatus;
 import com.everis.domain.Project;
 import com.everis.dao.EmployeeDao;
 import com.everis.dao.HolidayDao;
@@ -128,5 +129,11 @@ public class HolidayManagementServiceImpl implements HolidayManagementService, H
 	@Transactional
 	public List<Employee> getEmployeesByGrade(EmployeeGrade grade) {
 		return holidayManagementDao.getEmployeesByGrade(grade);
+	}
+
+	@Override
+	@Transactional
+	public List<Holiday> getHolidaysByStatus(HolidayStatus holidayStatus) {
+		return holidayManagementDao.getHolidaysByStatus(holidayStatus);
 	}
 }

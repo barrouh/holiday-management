@@ -10,7 +10,7 @@
                 <div>
                     <a href="/requestHoliday" class="uk-icon-link uk-margin-small-right uk-align-right" uk-icon="icon: plus-circle; ratio: 2" uk-tooltip="Request a new Holiday"></a>
                     <h2 class="uk-heading-line">
-				<spring:message code="holidays.header" />
+				<spring:message code="holidays.header.pending" />
 			</h2>
             <hr>
                 </div>
