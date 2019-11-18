@@ -14,7 +14,7 @@
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	
-	<name>HM - Holiday Management</name>
+	<name>Holiday Management</name>
 	<url>https://github.com/barrouh/holiday-management</url>
 
 	<developers>
@@ -180,14 +180,6 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.4.10.v20180503</version>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
 			<!-- run liquibase:generateChangeLog as maven goal to generate the database changelog -->
 			<plugin>
 				<groupId>org.liquibase</groupId>
@@ -196,11 +188,6 @@
 				<configuration>
 					<propertyFile>src/test/resources/liquibase.properties</propertyFile>
 				</configuration>
-			</plugin>
-			<!-- run sonar:sonar -Dsonar.login=$SONAR_TOKEN to analyse project code source in sonarcloud -->
-			<plugin>
-				<groupId>org.sonarsource.scanner.maven</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
