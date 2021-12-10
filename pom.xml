@@ -57,7 +57,7 @@
 		<hibernate.version>5.2.9.Final</hibernate.version>
 		<mysql.connector.version>8.0.16</mysql.connector.version>
 		<jstl.version>1.2</jstl.version>
-		<log4j.version>2.11.2</log4j.version>
+		<log4j.version>2.15.0</log4j.version>
 
 		<!-- h2 & liquibase -->
 		<h2.version>1.4.196</h2.version>
