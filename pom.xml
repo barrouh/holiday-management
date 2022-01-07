@@ -60,7 +60,7 @@
 		<log4j.version>2.11.2</log4j.version>
 
 		<!-- h2 & liquibase -->
-		<h2.version>1.4.196</h2.version>
+		<h2.version>2.0.206</h2.version>
 		<liquibase.version>3.6.2</liquibase.version>
 	</properties>
 
