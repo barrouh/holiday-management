@@ -61,7 +61,7 @@
 
 		<!-- h2 & liquibase -->
 		<h2.version>1.4.196</h2.version>
-		<liquibase.version>3.6.2</liquibase.version>
+		<liquibase.version>4.8.0</liquibase.version>
 	</properties>
 
 	<dependencies>
